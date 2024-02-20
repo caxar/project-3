@@ -3,13 +3,18 @@ import Search from "../Search";
 import Location from "../Location";
 
 const Header = () => {
+  const [dateState, setDateState] = React.useState(new Date());
+  React.useEffect(() => {
+    setInterval(() => setDateState(new Date()), 30000);
+  }, []);
+
   return (
     <div className="header container py-[20px] mb-[60px]">
       <div className="header-wrapper flex justify-between items-center">
         <div className="header-wrapper__block flex items-center gap-[20px]">
           <div
             className="header-block__menu bg-sidebar_color rounded-full w-[40px] h-[40px] flex
-          justify-center items-center cursor-pointer hover:bg-today"
+          justify-center items-center cursor-pointer hover:bg-card_color"
           >
             <svg
               width="25px"
@@ -49,7 +54,13 @@ const Header = () => {
             </svg>
           </div>
           <div className="header-block__time">
-            <span className="uppercase text-[25px] font-bold">1:32 AM</span>
+            <span className="uppercase text-[25px] font-bold">
+              {dateState.toLocaleString("en-US", {
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+              })}{" "}
+            </span>
           </div>
         </div>
         <div className="header-wrapper__search">

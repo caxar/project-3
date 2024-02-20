@@ -5,9 +5,11 @@ const CurrentWeather = () => {
     <div className="current-weather bg-sidebar_color w-[20%] h-[350px] py-5 px-5 rounded-2xl">
       <div className="current-weather__temp flex flex-col items-center">
         <div className="heading text-[40px] font-bold">
-          6<span className="font-normal text-[30px]">°C</span>
+          6<span className="text-[20px]">°C</span>
         </div>
-        <div className="condition font-bold">Overcast clouds. Light air</div>
+        <div className="condition font-bold text-[18px]">
+          Overcast clouds. Light air
+        </div>
       </div>
       <div className="current-weather__img flex justify-center my-3">
         <img
@@ -31,7 +33,7 @@ const CurrentWeather = () => {
             d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
           />
         </svg>
-        <span className="font-bold">Monday 19, March</span>
+        <span className="font-bold">ПН 19, Март</span>
       </div>
       <div className="current-weather__city flex items-center gap-2">
         <svg
@@ -54,7 +56,7 @@ const CurrentWeather = () => {
           />
         </svg>
 
-        <div className="weather-city__title font-bold">Sevastopol, RU</div>
+        <div className="weather-city__title font-bold">Севастополь, RU</div>
       </div>
     </div>
   );

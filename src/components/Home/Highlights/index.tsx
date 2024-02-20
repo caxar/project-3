@@ -4,13 +4,13 @@ const Highlights = () => {
   return (
     <div className="weather-items bg-sidebar_color w-[78%] py-5 px-7 rounded-2xl">
       <div className="weather-items__title text-[22px] font-bold mb-3">
-        Todays Highlights
+        Сегодняшний прогноз
       </div>
       <div className="weather-items__wrapper">
         <div className="weather-items__top flex justify-between mb-3">
           <div className="items-top__air w-[49%] bg-bg_color rounded-2xl py-5 px-5">
             <div className="top-air__title text-[18px] font-bold mb-3">
-              Air quality index
+              Индекс качества воздуха
             </div>
             <div className="top-air__wrapper flex justify-between items-center">
               <div className="air-wrapper__img w-[50px]">
@@ -22,40 +22,29 @@ const Highlights = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M3 8H9.5C10.8807 8 12 6.88071 12 5.5C12 4.11929 10.8807 3 9.5 3C8.11929 3 7 4.11929 7 5.5V5.85714"
-                    stroke="#ffffff"
-                    stroke-width="1.5"
+                    d="M15.7639 7C16.3132 6.38625 17.1115 6 18 6C19.6569 6 21 7.34315 21 9C21 10.6569 19.6569 12 18 12H3M8.50926 4.66667C8.87548 4.2575 9.40767 4 10 4C11.1046 4 12 4.89543 12 6C12 7.10457 11.1046 8 10 8H3M11.5093 19.3333C11.8755 19.7425 12.4077 20 13 20C14.1046 20 15 19.1046 15 18C15 16.8954 14.1046 16 13 16H3"
+                    stroke="#fff"
+                    stroke-width="2"
                     stroke-linecap="round"
-                  />
-                  <path
-                    d="M4 14H18.5C20.433 14 22 15.567 22 17.5C22 19.433 20.433 21 18.5 21C16.567 21 15 19.433 15 17.5V17"
-                    stroke="#ffffff"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                  />
-                  <path
-                    d="M2 11H18.5C20.433 11 22 9.433 22 7.5C22 5.567 20.433 4 18.5 4C16.567 4 15 5.567 15 7.5V8"
-                    stroke="#ffffff"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
                 </svg>
               </div>
               {/* <div className="air-wrapper__text">1.6m/s SE</div> */}
               <div className="air-wrapper__block flex justify-between gap-5">
-                <div className="air-wrapper__item w-[80px] flex flex-col items-center">
+                <div className="air-wrapper__item w-[90px] flex flex-col items-center">
                   <div className="title">PM25</div>
                   <div className="text text-[30px] font-bold">2.85</div>
                 </div>
-                <div className="air-wrapper__item w-[80px] flex flex-col items-center">
+                <div className="air-wrapper__item w-[90px] flex flex-col items-center">
                   <div className="title">SO2</div>
                   <div className="text text-[30px] font-bold">2.85</div>
                 </div>
-                <div className="air-wrapper__item w-[80px] flex flex-col items-center">
+                <div className="air-wrapper__item w-[90px] flex flex-col items-center">
                   <div className="title">No2</div>
                   <div className="text text-[30px] font-bold">2.85</div>
                 </div>
-                <div className="air-wrapper__item w-[80px] flex flex-col items-center">
+                <div className="air-wrapper__item w-[90px] flex flex-col items-center">
                   <div className="title">O3</div>
                   <div className="text text-[30px] font-bold">2.85</div>
                 </div>
@@ -64,48 +53,43 @@ const Highlights = () => {
           </div>
           <div className="items-top__solar w-[49%] bg-bg_color rounded-2xl py-5 px-5">
             <div className="top-solar__title text-[18px] font-bold mb-3">
-              Sunrise & Sunset
+              Рассвет & Закат
             </div>
             <div className="top-solar__wrapper flex justify-between">
               <div className="solar-sunrise flex items-center gap-4">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
+                  fill="#fff"
+                  width="40px"
+                  height="40px"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-10 h-10"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-                  />
+                  <path d="M23,16a1,1,0,0,1-1,1H2a1,1,0,0,1,0-2H22A1,1,0,0,1,23,16Zm-5,5a1,1,0,0,0,0-2H6a1,1,0,0,0,0,2ZM7,12a1,1,0,0,0,2,0,3,3,0,0,1,6,0,1,1,0,0,0,2,0A5,5,0,0,0,7,12Zm4-7a1,1,0,0,0,2,0V4a1,1,0,0,0-2,0Zm7,7a1,1,0,0,0,1,1h1a1,1,0,0,0,0-2H19A1,1,0,0,0,18,12ZM4,11a1,1,0,0,0,0,2H5a1,1,0,0,0,0-2ZM5.636,5.636a1,1,0,0,0,0,1.414l.707.707A1,1,0,0,0,7.757,6.343L7.05,5.636A1,1,0,0,0,5.636,5.636Zm11.314,0-.707.707a1,1,0,1,0,1.414,1.414l.707-.707A1,1,0,1,0,16.95,5.636Z" />
                 </svg>
 
                 <div className="text">
-                  <div className="text-title">Sunrise</div>
+                  <div className="text-title">Рассвет</div>
                   <span className="text-[30px] font-bold">4:54 AM</span>
                 </div>
               </div>
               <div className="solar-sunset flex items-center gap-4">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
+                  width="40px"
+                  height="40px"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-10 h-10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+                    d="M13 6V3M18.5 12V7M14.5 4.5H11.5M21 9.5H16M15.5548 16.8151C16.7829 16.8151 17.9493 16.5506 19 16.0754C17.6867 18.9794 14.7642 21 11.3698 21C6.74731 21 3 17.2527 3 12.6302C3 9.23576 5.02061 6.31331 7.92462 5C7.44944 6.05072 7.18492 7.21708 7.18492 8.44523C7.18492 13.0678 10.9322 16.8151 15.5548 16.8151Z"
+                    stroke="#fff"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
                 </svg>
-
                 <div className="text">
-                  <div className="text-title">Sunset</div>
+                  <div className="text-title">Закат</div>
                   <span className="text-[30px] font-bold">6:56 PM</span>
                 </div>
               </div>
@@ -114,115 +98,93 @@ const Highlights = () => {
         </div>
         <div className="weather-items__bottom flex justify-between">
           <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
-            <div className="bottom-item__title mb-3">Humidity</div>
+            <div className="bottom-item__title mb-3">Влажность</div>
             <div className="bottom-item__block flex items-center justify-between w-[180px]">
               <div className="item-block__img">
                 <svg
-                  fill="#ffffff"
-                  height="40px"
                   width="40px"
-                  version="1.1"
-                  id="Capa_1"
+                  height="40px"
+                  viewBox="0 0 24 24"
+                  fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 328.611 328.611"
                 >
-                  <g>
-                    <path
-                      d="M209.306,50.798c-2.452-3.337-7.147-4.055-10.485-1.602c-3.338,2.453-4.055,7.147-1.603,10.485
-		c54.576,74.266,66.032,123.541,66.032,151.8c0,27.691-8.272,52.794-23.293,70.685c-17.519,20.866-42.972,31.446-75.651,31.446
-		c-73.031,0-98.944-55.018-98.944-102.131c0-52.227,28.103-103.234,51.679-136.829c25.858-36.847,52.11-61.415,52.37-61.657
-		c3.035-2.819,3.209-7.565,0.39-10.6c-2.819-3.034-7.565-3.209-10.599-0.39c-1.11,1.031-27.497,25.698-54.254,63.765
-		c-24.901,35.428-54.586,89.465-54.586,145.71c0,31.062,9.673,59.599,27.236,80.353c20.361,24.061,50.345,36.779,86.708,36.779
-		c36.794,0,66.926-12.726,87.139-36.801c17.286-20.588,26.806-49.117,26.806-80.33C278.25,156.216,240.758,93.597,209.306,50.798z"
-                    />
-                    <path
-                      d="M198.43,148.146l-95.162,95.162c-2.929,2.929-2.929,7.678,0,10.606c1.465,1.464,3.385,2.197,5.304,2.197
-		s3.839-0.732,5.304-2.197l95.162-95.162c2.929-2.929,2.929-7.678,0-10.606C206.107,145.217,201.359,145.217,198.43,148.146z"
-                    />
-                    <path
-                      d="M191.965,207.899c-13.292,0-24.106,10.814-24.106,24.106s10.814,24.106,24.106,24.106s24.106-10.814,24.106-24.106
-		S205.257,207.899,191.965,207.899z M191.965,241.111c-5.021,0-9.106-4.085-9.106-9.106s4.085-9.106,9.106-9.106
-		s9.106,4.085,9.106,9.106S196.986,241.111,191.965,241.111z"
-                    />
-                    <path
-                      d="M125.178,194.162c13.292,0,24.106-10.814,24.106-24.106s-10.814-24.106-24.106-24.106s-24.106,10.814-24.106,24.106
-		S111.886,194.162,125.178,194.162z M125.178,160.949c5.021,0,9.106,4.085,9.106,9.106s-4.085,9.106-9.106,9.106
-		c-5.021,0-9.106-4.085-9.106-9.106S120.156,160.949,125.178,160.949z"
-                    />
-                  </g>
+                  <path
+                    d="M15.0066 3.25608C16.8483 2.85737 19.1331 2.8773 22.2423 3.65268C22.7781 3.78629 23.1038 4.32791 22.9699 4.86241C22.836 5.39691 22.2931 5.7219 21.7573 5.58829C18.8666 4.86742 16.9015 4.88747 15.4308 5.20587C13.9555 5.52524 12.895 6.15867 11.7715 6.84363L11.6874 6.89494C10.6044 7.55565 9.40515 8.28729 7.82073 8.55069C6.17734 8.82388 4.23602 8.58235 1.62883 7.54187C1.11607 7.33724 0.866674 6.75667 1.0718 6.24513C1.27692 5.73359 1.85889 5.48479 2.37165 5.68943C4.76435 6.6443 6.32295 6.77699 7.492 6.58265C8.67888 6.38535 9.58373 5.83916 10.7286 5.14119C11.855 4.45445 13.1694 3.6538 15.0066 3.25608Z"
+                    fill="#ffffff"
+                  />
+                  <path
+                    d="M22.2423 7.64302C19.1331 6.86765 16.8483 6.84772 15.0066 7.24642C13.1694 7.64415 11.855 8.44479 10.7286 9.13153C9.58373 9.8295 8.67888 10.3757 7.492 10.573C6.32295 10.7673 4.76435 10.6346 2.37165 9.67977C1.85889 9.47514 1.27692 9.72393 1.0718 10.2355C0.866674 10.747 1.11607 11.3276 1.62883 11.5322C4.23602 12.5727 6.17734 12.8142 7.82073 12.541C9.40515 12.2776 10.6044 11.546 11.6874 10.8853L11.7715 10.834C12.895 10.149 13.9555 9.51558 15.4308 9.19621C16.9015 8.87781 18.8666 8.85777 21.7573 9.57863C22.2931 9.71224 22.836 9.38726 22.9699 8.85275C23.1038 8.31825 22.7781 7.77663 22.2423 7.64302Z"
+                    fill="#ffffff"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M18.9998 10.0266C18.6526 10.0266 18.3633 10.2059 18.1614 10.4772C18.0905 10.573 17.9266 10.7972 17.7089 11.111C17.4193 11.5283 17.0317 12.1082 16.6424 12.7555C16.255 13.3996 15.8553 14.128 15.5495 14.8397C15.2567 15.5213 14.9989 16.2614 14.9999 17.0117C15.0006 17.2223 15.0258 17.4339 15.0604 17.6412C15.1182 17.9872 15.2356 18.4636 15.4804 18.9521C15.7272 19.4446 16.1131 19.9674 16.7107 20.3648C17.3146 20.7664 18.0748 21 18.9998 21C19.9248 21 20.685 20.7664 21.2888 20.3648C21.8864 19.9674 22.2724 19.4446 22.5192 18.9522C22.764 18.4636 22.8815 17.9872 22.9393 17.6413C22.974 17.4337 22.9995 17.2215 22.9998 17.0107C23.0001 16.2604 22.743 15.5214 22.4501 14.8397C22.1444 14.128 21.7447 13.3996 21.3573 12.7555C20.968 12.1082 20.5803 11.5283 20.2907 11.111C20.073 10.7972 19.909 10.573 19.8382 10.4772C19.6363 10.2059 19.3469 10.0266 18.9998 10.0266ZM20.6119 15.6257C20.3552 15.0281 20.0049 14.3848 19.6423 13.782C19.4218 13.4154 19.2007 13.0702 18.9998 12.7674C18.7989 13.0702 18.5778 13.4154 18.3573 13.782C17.9948 14.3848 17.6445 15.0281 17.3878 15.6257L17.3732 15.6595C17.1965 16.0704 16.9877 16.5562 17.0001 17.0101C17.0121 17.3691 17.1088 17.7397 17.2693 18.0599C17.3974 18.3157 17.574 18.5411 17.8201 18.7048C18.06 18.8643 18.4248 19.0048 18.9998 19.0048C19.5748 19.0048 19.9396 18.8643 20.1795 18.7048C20.4256 18.5411 20.6022 18.3156 20.7304 18.0599C20.8909 17.7397 20.9876 17.3691 20.9996 17.01C21.0121 16.5563 20.8032 16.0705 20.6265 15.6597L20.6119 15.6257Z"
+                    fill="#ffffff"
+                  />
+                  <path
+                    d="M14.1296 11.5308C14.8899 11.2847 15.4728 12.076 15.1153 12.7892C14.952 13.1151 14.7683 13.3924 14.4031 13.5214C13.426 13.8666 12.6166 14.3527 11.7715 14.8679L11.6874 14.9192C10.6044 15.5799 9.40516 16.3115 7.82074 16.5749C6.17735 16.8481 4.23604 16.6066 1.62884 15.5661C1.11608 15.3615 0.866688 14.7809 1.07181 14.2694C1.27694 13.7578 1.8589 13.509 2.37167 13.7137C4.76436 14.6685 6.32297 14.8012 7.49201 14.6069C8.67889 14.4096 9.58374 13.8634 10.7286 13.1654C11.8166 12.5021 12.9363 11.9171 14.1296 11.5308Z"
+                    fill="#ffffff"
+                  />
                 </svg>
               </div>
-              <div className="item-block__text text-[30px] font-bold">51%</div>
+              <div className="item-block__text text-[30px] font-bold">
+                51<span className="text-[20px]">%</span>
+              </div>
             </div>
           </div>
           {/* 2 */}
           <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
-            <div className="bottom-item__title mb-3">Pressure</div>
+            <div className="bottom-item__title mb-3">Давление</div>
             <div className="bottom-item__block flex items-center justify-between w-[180px]">
               <div className="item-block__img">
                 <svg
-                  fill="#ffffff"
                   width="40px"
                   height="40px"
-                  viewBox="0 0 64 64"
-                  version="1.1"
+                  viewBox="0 0 24 24"
+                  fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g id="cloudy_sunny" />
-
-                  <g id="bright" />
-
-                  <g id="cloudy" />
-
-                  <g id="high_rainfall" />
-
-                  <g id="windy" />
-
-                  <g id="rain_with_thunder" />
-
-                  <g id="clear_night" />
-
-                  <g id="cloudy_night" />
-
-                  <g id="moon" />
-
-                  <g id="sun" />
-
-                  <g id="rainy_night" />
-
-                  <g id="windy_night" />
-
-                  <g id="night_rain_thunder" />
-
-                  <g id="windy_rain" />
-
-                  <g id="temperature" />
-
-                  <g id="humidity" />
-
-                  <g id="air_pressure">
-                    <g>
-                      <path d="M40.9,27.2l-7.6,12.9C32.9,40.1,32.5,40,32,40c-2.8,0-5,2.2-5,5s2.2,5,5,5s5-2.2,5-5c0-1.6-0.8-3-1.9-3.9l7.3-12.4    c2,2.3,3.3,5.2,3.5,8.4c0,0.5,0.5,0.9,1,0.9h3.4c0.5,0,0.8-0.3,1-0.7c0.5-1.7,0.7-3.5,0.7-5.3c0-11-9-20-20-20s-20,9-20,20    c0,1.8,0.2,3.6,0.7,5.3c0.1,0.4,0.5,0.7,1,0.7H17c0.5,0,1-0.4,1-0.9C18.5,29.7,24.6,24,32,24C35.4,24,38.5,25.2,40.9,27.2z M32,48    c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3S33.7,48,32,48z M25.8,23.3l-2.9-6.7c0,0,0-0.1-0.1-0.1c2.4-1.4,5.2-2.3,8.1-2.5v8    C29.2,22.2,27.4,22.6,25.8,23.3z M33,22v-8c3,0.2,5.7,1,8.1,2.5c0,0,0,0.1-0.1,0.1l-2.9,6.7C36.6,22.6,34.8,22.2,33,22z M49.6,36    h-1.7c-0.3-2.3-1.1-4.4-2.2-6.3l3.6-2.7c0.5,1.6,0.7,3.2,0.7,5C50,33.4,49.8,34.7,49.6,36z M48.6,25.1c-0.1,0-0.2,0.1-0.2,0.1    l-3.9,2.9c-0.3-0.4-0.7-0.8-1.1-1.2l1.4-2.4c0.3-0.5,0.1-1.1-0.4-1.4c-0.5-0.3-1.1-0.1-1.4,0.4l-1.2,2c-0.6-0.5-1.3-0.9-1.9-1.3    l2.8-6.5C45.4,19.6,47.4,22.1,48.6,25.1z M16.1,36h-1.7c-0.3-1.3-0.4-2.6-0.4-4c0-1.7,0.3-3.4,0.7-5l3.6,2.7    C17.2,31.6,16.4,33.7,16.1,36z M19.5,28.1l-3.9-2.9c-0.1-0.1-0.1-0.1-0.2-0.1c1.2-3,3.3-5.5,5.8-7.5l2.8,6.5    C22.2,25.2,20.7,26.5,19.5,28.1z" />
-
-                      <path d="M56,51h-6.3c5.1-4.7,8.3-11.5,8.3-19C58,17.7,46.3,6,32,6c-1.1,0-2.2,0.1-3.3,0.2C27.9,4.3,26.1,3,24,3h-1    c-2.2,0-4,1.8-4,4c0,0.8,0.3,1.5,0.8,2c-1.1,0.6-2.1,1.2-3.1,2H4c-0.6,0-1,0.4-1,1s0.4,1,1,1h10.3C9.2,17.7,6,24.5,6,32    c0,14.3,11.7,26,26,26c5.7,0,11-1.9,15.3-5H56c1.7,0,3,1.3,3,3s-1.3,3-3,3h-1c-1.1,0-2-0.9-2-2c0-0.6,0.4-1,1-1c0.6,0,1-0.4,1-1    s-0.4-1-1-1c-1.7,0-3,1.3-3,3c0,2.2,1.8,4,4,4h1c2.8,0,5-2.2,5-5S58.8,51,56,51z M22,8c-0.6,0-1-0.4-1-1c0-1.1,0.9-2,2-2h1    c1.1,0,2.1,0.6,2.6,1.6C25,6.9,23.5,7.4,22,8C22,8,22,8,22,8z M26.9,8.5C26.7,9.9,25.5,11,24,11h-3.6C22.4,9.9,24.6,9,26.9,8.5z     M32,56C18.8,56,8,45.2,8,32c0-7.7,3.7-14.6,9.4-19H24c2.7,0,4.9-2.1,5-4.8C30,8.1,31,8,32,8c13.2,0,24,10.8,24,24    c0,7.7-3.7,14.6-9.4,19H28c-0.6,0-1,0.4-1,1s0.4,1,1,1h15.6C40.2,54.9,36.2,56,32,56z" />
-                    </g>
-                  </g>
-
-                  <g id="low_rainfall" />
-
-                  <g id="moderate_rainfall" />
-
-                  <g id="Sunset" />
+                  <path
+                    d="M12 9C11.4477 9 11 9.44771 11 10V15.2676C10.4022 15.6134 10 16.2597 10 17C10 18.1046 10.8954 19 12 19C13.1046 19 14 18.1046 14 17C14 16.2597 13.5978 15.6134 13 15.2676V10C13 9.44771 12.5523 9 12 9Z"
+                    fill="#fff"
+                  />
+                  <path
+                    d="M11 6C11 5.44772 11.4477 5 12 5C12.5523 5 13 5.44772 13 6C13 6.55228 12.5523 7 12 7C11.4477 7 11 6.55228 11 6Z"
+                    fill="#fff"
+                  />
+                  <path
+                    d="M16 7C15.4477 7 15 7.44772 15 8C15 8.55229 15.4477 9 16 9C16.5523 9 17 8.55229 17 8C17 7.44772 16.5523 7 16 7Z"
+                    fill="#fff"
+                  />
+                  <path
+                    d="M6 13C5.44772 13 5 12.5523 5 12C5 11.4477 5.44772 11 6 11C6.55228 11 7 11.4477 7 12C7 12.5523 6.55228 13 6 13Z"
+                    fill="#fff"
+                  />
+                  <path
+                    d="M7 8C7 8.55229 7.44772 9 8 9C8.55228 9 9 8.55228 9 8C9 7.44772 8.55228 7 8 7C7.44772 7 7 7.44772 7 8Z"
+                    fill="#fff"
+                  />
+                  <path
+                    d="M18 13C17.4477 13 17 12.5523 17 12C17 11.4477 17.4477 11 18 11C18.5523 11 19 11.4477 19 12C19 12.5523 18.5523 13 18 13Z"
+                    fill="#fff"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23ZM12 20.9932C7.03321 20.9932 3.00683 16.9668 3.00683 12C3.00683 7.03321 7.03321 3.00683 12 3.00683C16.9668 3.00683 20.9932 7.03321 20.9932 12C20.9932 16.9668 16.9668 20.9932 12 20.9932Z"
+                    fill="#fff"
+                  />
                 </svg>
               </div>
               <div className="item-block__text text-[30px] font-bold">
-                1024hPa
+                1024<span className="text-[20px]">hPa</span>
               </div>
             </div>
           </div>
           {/* 3 */}
           <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
-            <div className="bottom-item__title mb-3">Visibility</div>
+            <div className="bottom-item__title mb-3">Видимость</div>
             <div className="bottom-item__block flex items-center justify-between w-[180px]">
               <div className="item-block__img">
                 <svg
@@ -260,13 +222,13 @@ const Highlights = () => {
                 </svg>
               </div>
               <div className="item-block__text text-[30px] font-bold">
-                10.0km
+                10.0<span className="text-[20px]">km</span>
               </div>
             </div>
           </div>
           {/* 4 */}
           <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
-            <div className="bottom-item__title mb-3">Feels like</div>
+            <div className="bottom-item__title mb-3">Ощущается как</div>
             <div className="bottom-item__block flex items-center justify-between w-[180px]">
               <div className="item-block__img">
                 <svg
@@ -285,12 +247,14 @@ const Highlights = () => {
                   />
                 </svg>
               </div>
-              <div className="item-block__text text-[30px] font-bold">5°C</div>
+              <div className="item-block__text text-[30px] font-bold">
+                5<span className="text-[20px]">°C</span>
+              </div>
             </div>
           </div>
           {/* 5 */}
           <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
-            <div className="bottom-item__title mb-3">Dew point</div>
+            <div className="bottom-item__title mb-3">Точка росы</div>
             <div className="bottom-item__block flex items-center justify-between w-[180px]">
               <div className="item-block__img">
                 <svg
@@ -319,7 +283,9 @@ const Highlights = () => {
                   />
                 </svg>
               </div>
-              <div className="item-block__text text-[30px] font-bold">-3°C</div>
+              <div className="item-block__text text-[30px] font-bold">
+                -3<span className="text-[20px]">°C</span>
+              </div>
             </div>
           </div>
         </div>

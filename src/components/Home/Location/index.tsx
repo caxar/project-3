@@ -28,7 +28,7 @@ const Location = () => {
             />
           </svg>
         </div>
-        <div className="location-wrapper__text">Current Location</div>
+        <div className="location-wrapper__text">Местоположение</div>
       </div>
     </div>
   );

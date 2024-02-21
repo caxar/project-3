@@ -3,7 +3,11 @@ import Search from "../Search";
 import Location from "../Location";
 
 const Header = () => {
+  // для выввода времени системы
   const [dateState, setDateState] = React.useState(new Date());
+
+  // вывод времени без березагрузки
+  // проверка каждые 30 сек
   React.useEffect(() => {
     setInterval(() => setDateState(new Date()), 30000);
   }, []);
@@ -58,7 +62,7 @@ const Header = () => {
               {dateState.toLocaleString("en-US", {
                 hour: "numeric",
                 minute: "numeric",
-                hour12: true,
+                hour12: false,
               })}{" "}
             </span>
           </div>

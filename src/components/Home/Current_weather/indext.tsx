@@ -2,7 +2,7 @@ import React from "react";
 
 const CurrentWeather = () => {
   return (
-    <div className="current-weather bg-sidebar_color w-[20%] h-[350px] py-5 px-5 rounded-2xl">
+    <div className="current-weather bg-sidebar_color w-[23%] h-[350px] py-5 px-5 rounded-2xl">
       <div className="current-weather__temp flex flex-col items-center">
         <div className="heading text-[40px] font-bold">
           6<span className="text-[20px]">°C</span>

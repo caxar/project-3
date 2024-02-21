@@ -2,9 +2,9 @@ import React from "react";
 
 const Highlights = () => {
   return (
-    <div className="weather-items bg-sidebar_color w-[78%] py-5 px-7 rounded-2xl">
+    <div className="weather-items bg-sidebar_color w-[75%] py-5 px-7 rounded-2xl">
       <div className="weather-items__title text-[22px] font-bold mb-3">
-        Сегодняшний прогноз
+        Прогноз на сегодня
       </div>
       <div className="weather-items__wrapper">
         <div className="weather-items__top flex justify-between mb-3">
@@ -99,7 +99,7 @@ const Highlights = () => {
         <div className="weather-items__bottom flex justify-between">
           <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
             <div className="bottom-item__title mb-3">Влажность</div>
-            <div className="bottom-item__block flex items-center justify-between w-[180px]">
+            <div className="bottom-item__block flex items-center justify-between w-[170px]">
               <div className="item-block__img">
                 <svg
                   width="40px"
@@ -136,7 +136,7 @@ const Highlights = () => {
           {/* 2 */}
           <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
             <div className="bottom-item__title mb-3">Давление</div>
-            <div className="bottom-item__block flex items-center justify-between w-[180px]">
+            <div className="bottom-item__block flex items-center justify-between w-[170px]">
               <div className="item-block__img">
                 <svg
                   width="40px"
@@ -185,7 +185,7 @@ const Highlights = () => {
           {/* 3 */}
           <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
             <div className="bottom-item__title mb-3">Видимость</div>
-            <div className="bottom-item__block flex items-center justify-between w-[180px]">
+            <div className="bottom-item__block flex items-center justify-between w-[170px]">
               <div className="item-block__img">
                 <svg
                   fill="#fff"
@@ -229,7 +229,7 @@ const Highlights = () => {
           {/* 4 */}
           <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
             <div className="bottom-item__title mb-3">Ощущается как</div>
-            <div className="bottom-item__block flex items-center justify-between w-[180px]">
+            <div className="bottom-item__block flex items-center justify-between w-[170px]">
               <div className="item-block__img">
                 <svg
                   width="40px"
@@ -255,7 +255,7 @@ const Highlights = () => {
           {/* 5 */}
           <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
             <div className="bottom-item__title mb-3">Точка росы</div>
-            <div className="bottom-item__block flex items-center justify-between w-[180px]">
+            <div className="bottom-item__block flex items-center justify-between w-[170px]">
               <div className="item-block__img">
                 <svg
                   width="40px"

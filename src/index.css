@@ -15,3 +15,12 @@ input {
 a {
   text-decoration: none;
 }
+
+.swiper-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.swiper-wrapper .swiper-slide {
+  width: 100px !important;
+}

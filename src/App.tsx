@@ -7,13 +7,11 @@ import { store } from "./redux/store";
 import Home from "./components/Home";
 
 import "./App.css";
-import Header from "./components/Home/Header";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>

@@ -2,7 +2,11 @@ import React from "react";
 import Search from "../Search";
 import Location from "../Location";
 
-const Header = () => {
+interface HeaderProps {
+  setOpenMenu: (i: boolean) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ setOpenMenu }) => {
   // для выввода времени системы
   const [dateState, setDateState] = React.useState(new Date());
 
@@ -17,6 +21,7 @@ const Header = () => {
       <div className="header-wrapper flex justify-between items-center">
         <div className="header-wrapper__block flex items-center gap-[20px]">
           <div
+            onClick={() => setOpenMenu(true)}
             className="header-block__menu bg-sidebar_color rounded-full w-[40px] h-[40px] flex
           justify-center items-center cursor-pointer hover:bg-card_color"
           >

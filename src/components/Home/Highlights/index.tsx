@@ -1,6 +1,14 @@
 import React from "react";
+import { selectWeather } from "../../../redux/weather/selectors";
+import { useSelector } from "react-redux";
 
 const Highlights = () => {
+  const { entities } = useSelector(selectWeather);
+
+  const { visibility, main, sys, wind }: any = entities;
+
+  console.log(entities);
+
   return (
     <div className="weather-items bg-sidebar_color w-[75%] py-5 px-7 rounded-2xl">
       <div className="weather-items__title text-[22px] font-bold mb-3">
@@ -24,9 +32,9 @@ const Highlights = () => {
                   <path
                     d="M15.7639 7C16.3132 6.38625 17.1115 6 18 6C19.6569 6 21 7.34315 21 9C21 10.6569 19.6569 12 18 12H3M8.50926 4.66667C8.87548 4.2575 9.40767 4 10 4C11.1046 4 12 4.89543 12 6C12 7.10457 11.1046 8 10 8H3M11.5093 19.3333C11.8755 19.7425 12.4077 20 13 20C14.1046 20 15 19.1046 15 18C15 16.8954 14.1046 16 13 16H3"
                     stroke="#fff"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
@@ -69,7 +77,13 @@ const Highlights = () => {
 
                 <div className="text">
                   <div className="text-title">Рассвет</div>
-                  <span className="text-[30px] font-bold">4:54 AM</span>
+                  <span className="text-[30px] font-bold">
+                    {new Date(sys?.sunrise * 1000).toLocaleTimeString("en-US", {
+                      hour: "numeric",
+                      minute: "numeric",
+                      hour12: false,
+                    })}
+                  </span>
                 </div>
               </div>
               <div className="solar-sunset flex items-center gap-4">
@@ -83,14 +97,20 @@ const Highlights = () => {
                   <path
                     d="M13 6V3M18.5 12V7M14.5 4.5H11.5M21 9.5H16M15.5548 16.8151C16.7829 16.8151 17.9493 16.5506 19 16.0754C17.6867 18.9794 14.7642 21 11.3698 21C6.74731 21 3 17.2527 3 12.6302C3 9.23576 5.02061 6.31331 7.92462 5C7.44944 6.05072 7.18492 7.21708 7.18492 8.44523C7.18492 13.0678 10.9322 16.8151 15.5548 16.8151Z"
                     stroke="#fff"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
                 <div className="text">
                   <div className="text-title">Закат</div>
-                  <span className="text-[30px] font-bold">6:56 PM</span>
+                  <span className="text-[30px] font-bold">
+                    {new Date(sys?.sunset * 1000).toLocaleTimeString("en-US", {
+                      hour: "numeric",
+                      minute: "numeric",
+                      hour12: false,
+                    })}
+                  </span>
                 </div>
               </div>
             </div>
@@ -117,8 +137,8 @@ const Highlights = () => {
                     fill="#ffffff"
                   />
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M18.9998 10.0266C18.6526 10.0266 18.3633 10.2059 18.1614 10.4772C18.0905 10.573 17.9266 10.7972 17.7089 11.111C17.4193 11.5283 17.0317 12.1082 16.6424 12.7555C16.255 13.3996 15.8553 14.128 15.5495 14.8397C15.2567 15.5213 14.9989 16.2614 14.9999 17.0117C15.0006 17.2223 15.0258 17.4339 15.0604 17.6412C15.1182 17.9872 15.2356 18.4636 15.4804 18.9521C15.7272 19.4446 16.1131 19.9674 16.7107 20.3648C17.3146 20.7664 18.0748 21 18.9998 21C19.9248 21 20.685 20.7664 21.2888 20.3648C21.8864 19.9674 22.2724 19.4446 22.5192 18.9522C22.764 18.4636 22.8815 17.9872 22.9393 17.6413C22.974 17.4337 22.9995 17.2215 22.9998 17.0107C23.0001 16.2604 22.743 15.5214 22.4501 14.8397C22.1444 14.128 21.7447 13.3996 21.3573 12.7555C20.968 12.1082 20.5803 11.5283 20.2907 11.111C20.073 10.7972 19.909 10.573 19.8382 10.4772C19.6363 10.2059 19.3469 10.0266 18.9998 10.0266ZM20.6119 15.6257C20.3552 15.0281 20.0049 14.3848 19.6423 13.782C19.4218 13.4154 19.2007 13.0702 18.9998 12.7674C18.7989 13.0702 18.5778 13.4154 18.3573 13.782C17.9948 14.3848 17.6445 15.0281 17.3878 15.6257L17.3732 15.6595C17.1965 16.0704 16.9877 16.5562 17.0001 17.0101C17.0121 17.3691 17.1088 17.7397 17.2693 18.0599C17.3974 18.3157 17.574 18.5411 17.8201 18.7048C18.06 18.8643 18.4248 19.0048 18.9998 19.0048C19.5748 19.0048 19.9396 18.8643 20.1795 18.7048C20.4256 18.5411 20.6022 18.3156 20.7304 18.0599C20.8909 17.7397 20.9876 17.3691 20.9996 17.01C21.0121 16.5563 20.8032 16.0705 20.6265 15.6597L20.6119 15.6257Z"
                     fill="#ffffff"
                   />
@@ -129,7 +149,8 @@ const Highlights = () => {
                 </svg>
               </div>
               <div className="item-block__text text-[30px] font-bold">
-                51<span className="text-[20px]">%</span>
+                {main?.humidity}
+                <span className="text-[20px]">%</span>
               </div>
             </div>
           </div>
@@ -170,15 +191,16 @@ const Highlights = () => {
                     fill="#fff"
                   />
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23ZM12 20.9932C7.03321 20.9932 3.00683 16.9668 3.00683 12C3.00683 7.03321 7.03321 3.00683 12 3.00683C16.9668 3.00683 20.9932 7.03321 20.9932 12C20.9932 16.9668 16.9668 20.9932 12 20.9932Z"
                     fill="#fff"
                   />
                 </svg>
               </div>
               <div className="item-block__text text-[30px] font-bold">
-                1024<span className="text-[20px]">hPa</span>
+                {main?.pressure}
+                <span className="text-[20px]">hPa</span>
               </div>
             </div>
           </div>
@@ -222,7 +244,8 @@ const Highlights = () => {
                 </svg>
               </div>
               <div className="item-block__text text-[30px] font-bold">
-                10.0<span className="text-[20px]">km</span>
+                {Math.round(visibility * 100) / 100000}
+                <span className="text-[20px]">km</span>
               </div>
             </div>
           </div>
@@ -241,20 +264,21 @@ const Highlights = () => {
                   <path
                     d="M15 4H20M15 8H20M17 12H20M8 15.9998C7.44772 15.9998 7 16.4475 7 16.9998C7 17.5521 7.44772 17.9998 8 17.9998C8.55228 17.9998 9 17.5521 9 16.9998C9 16.4475 8.55228 15.9998 8 15.9998ZM8 15.9998V9M8 16.9998L8.00707 17.0069M12 16.9998C12 19.209 10.2091 20.9998 8 20.9998C5.79086 20.9998 4 19.209 4 16.9998C4 15.9854 4.37764 15.0591 5 14.354L5 6C5 4.34315 6.34315 3 8 3C9.65685 3 11 4.34315 11 6V14.354C11.6224 15.0591 12 15.9854 12 16.9998Z"
                     stroke="#ffffff"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
               <div className="item-block__text text-[30px] font-bold">
-                5<span className="text-[20px]">°C</span>
+                {main?.feels_like}
+                <span className="text-[20px]">°C</span>
               </div>
             </div>
           </div>
           {/* 5 */}
           <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
-            <div className="bottom-item__title mb-3">Точка росы</div>
+            <div className="bottom-item__title mb-3">Скорость ветра</div>
             <div className="bottom-item__block flex items-center justify-between w-[170px]">
               <div className="item-block__img">
                 <svg
@@ -262,29 +286,17 @@ const Highlights = () => {
                   height="40px"
                   viewBox="0 0 1024 1024"
                   className="icon"
-                  version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M339.7 882.5C196.6 882.5 80.2 766.1 80.2 623c0-133.2 204.8-395.1 228.2-424.5 5.8-7.3 14.5-11.6 23.8-11.7 9.4-0.1 18.1 3.9 24.1 11 1.5 1.8 37.7 44.8 82.2 105.2 10.1 13.8 7.2 33.2-6.6 43.3-13.8 10.1-33.2 7.2-43.3-6.6-21.3-29-40.9-54-55.3-72.1-69.2 92-191.2 271.5-191.2 355.4 0 108.9 88.6 197.6 197.6 197.6S537.3 731.9 537.3 623c0-17.1 13.9-31 31-31s31 13.9 31 31c-0.1 143.1-116.5 259.5-259.6 259.5z"
                     fill="#ffffff"
-                  />
-                  <path
-                    d="M363.7 468.8c-27.9 59.7-46.8 115.7-46.8 158.4 0 164.6 133.4 298 298 298s298-133.4 298-298c0-12.8-1.9-26.9-5.5-41.9-327.2 33.9-284.9-194.9-543.7-116.5z"
-                    fill="#ffffff"
-                  />
-                  <path
-                    d="M333.6 567.6c-38.2 239.9 123 357.7 287.3 357.7 92.8 0 144.9-12.1 199.6-78.6-261.5 20.7-428.7-99.2-486.9-279.1z"
-                    fill="#ffffff"
-                  />
-                  <path
-                    d="M614.9 956.1C433.5 956.1 286 808.5 286 627.2c0-173.4 283.4-532.4 295.5-547.6 5.8-7.3 14.5-11.6 23.8-11.7 9.3-0.1 18.1 3.9 24.1 11 2 2.3 49 58.2 106.8 136.6 10.1 13.8 7.2 33.2-6.6 43.3-13.8 10.1-33.2 7.2-43.3-6.6-31.8-43.2-60.6-79.8-79.9-103.7C517 266.1 347.9 512.3 347.9 627.2c0 147.2 119.8 267 267 267s267-119.8 267-267c0-29.7-13.2-87.9-76.4-196.2-8.6-14.8-3.6-33.7 11.2-42.3 14.8-8.6 33.7-3.6 42.3 11.2 57.1 97.9 84.8 172.2 84.8 227.4 0 181.3-147.6 328.8-328.9 328.8z"
-                    fill="#ffffff"
+                    d="M160 64q32 0 32 32v832q0 32-32 32t-32-32V96q0-32 32-32zM576 418.624l128-11.584V168.96l-128-11.52v261.12zm-64 5.824V151.552L320 134.08V160h-64V64l616.704 56.064A96 96 0 01960 215.68v144.64a96 96 0 01-87.296 95.616L256 512V224h64v217.92l192-17.472zm256-23.232l98.88-8.96A32 32 0 00896 360.32V215.68a32 32 0 00-29.12-31.872l-98.88-8.96v226.368z"
                   />
                 </svg>
               </div>
               <div className="item-block__text text-[30px] font-bold">
-                -3<span className="text-[20px]">°C</span>
+                {wind?.speed}
+                <span className="text-[20px]">m/s</span>
               </div>
             </div>
           </div>

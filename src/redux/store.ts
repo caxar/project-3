@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
+import WeatherReducer from "./weather/weatherSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    weather: WeatherReducer,
+  },
 });
 
 // Глобальный тип всех Reducer

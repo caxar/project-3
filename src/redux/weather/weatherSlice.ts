@@ -5,19 +5,19 @@ import { fetchWeathersAction } from "./asyncActions";
 const initialState = {
   entities: [],
   search: "",
-  city: "Sevastopol",
+  city: "Sevastopol", // default город
+  lat: 44.5, // default позиция
+  lon: 33.5333, // default позиция
   status: Status.Pending, // pending | succeeded | failed
-} as weatherSliceState;
+} as unknown as weatherSliceState;
 
 export const weatherSlice = createSlice({
   name: "weather",
   initialState,
   reducers: {
-    setCity: (state, action) => {
-      state.search = action.payload;
-    },
-    changeSearch: (state, action) => {
-      state.search = action.payload;
+    setCurrentLocation: (state, action) => {
+      state.lat = action.payload.latitude;
+      state.lon = action.payload.longitude;
     },
   },
 
@@ -36,6 +36,6 @@ export const weatherSlice = createSlice({
   },
 });
 
-export const { setCity, changeSearch } = weatherSlice.actions;
+export const { setCurrentLocation } = weatherSlice.actions;
 
 export default weatherSlice.reducer;

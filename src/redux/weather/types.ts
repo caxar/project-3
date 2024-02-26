@@ -27,10 +27,13 @@ export interface WeatherProps {
 export interface weatherSliceState {
   entities: any[];
   search: string;
+  lat: number;
+  lot: number;
   city: any;
   status: Status;
 }
 
 export type fetchWeatherCity = {
-  city: any;
+  lat: any;
+  lon: any;
 };

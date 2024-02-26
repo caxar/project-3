@@ -1,10 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import WeatherReducer from "./weather/weatherSlice";
+import AirReducer from "./airPopulation/airSlice";
+import ForecastReducer from "./forecast/forecastSlice";
+import HourForecastReducer from "./hourForecast/hourForecastSlice";
 
 export const store = configureStore({
   reducer: {
     weather: WeatherReducer,
+    air: AirReducer,
+    forecast: ForecastReducer,
+    hourForecast: HourForecastReducer,
   },
 });
 

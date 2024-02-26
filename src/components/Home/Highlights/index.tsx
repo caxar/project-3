@@ -1,13 +1,18 @@
 import React from "react";
 import { selectWeather } from "../../../redux/weather/selectors";
 import { useSelector } from "react-redux";
+import { selectAir } from "../../../redux/airPopulation/selectors";
 
 const Highlights = () => {
   const { entities } = useSelector(selectWeather);
+  const { entitiesAir } = useSelector(selectAir);
 
   const { visibility, main, sys, wind }: any = entities;
+  const { list }: any = entitiesAir;
 
-  console.log(entities);
+  if (!list) return <></>;
+
+  const airData = list?.[0]?.components;
 
   return (
     <div className="weather-items bg-sidebar_color w-[75%] py-5 px-7 rounded-2xl">
@@ -42,19 +47,27 @@ const Highlights = () => {
               <div className="air-wrapper__block flex justify-between gap-5">
                 <div className="air-wrapper__item w-[90px] flex flex-col items-center">
                   <div className="title">PM25</div>
-                  <div className="text text-[30px] font-bold">2.85</div>
+                  <div className="text text-[30px] font-bold">
+                    {airData?.pm2_5}
+                  </div>
                 </div>
                 <div className="air-wrapper__item w-[90px] flex flex-col items-center">
                   <div className="title">SO2</div>
-                  <div className="text text-[30px] font-bold">2.85</div>
+                  <div className="text text-[30px] font-bold">
+                    {airData?.so2}
+                  </div>
                 </div>
                 <div className="air-wrapper__item w-[90px] flex flex-col items-center">
                   <div className="title">No2</div>
-                  <div className="text text-[30px] font-bold">2.85</div>
+                  <div className="text text-[30px] font-bold">
+                    {airData?.no2}
+                  </div>
                 </div>
                 <div className="air-wrapper__item w-[90px] flex flex-col items-center">
                   <div className="title">O3</div>
-                  <div className="text text-[30px] font-bold">2.85</div>
+                  <div className="text text-[30px] font-bold">
+                    {airData?.o3}
+                  </div>
                 </div>
               </div>
             </div>

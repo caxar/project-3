@@ -1,8 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchWeathersAction } from "../../redux/weather/asyncActions";
 import { selectWeather } from "../../redux/weather/selectors";
+import { fetchWeathersAction } from "../../redux/weather/asyncActions";
+import { fetchAirsAction } from "../../redux/airPopulation/asyncActions";
+import { fetchForecast } from "../../redux/forecast/asyncActions";
+import { fetchHourForecast } from "../../redux/hourForecast/asyncActions";
 
 import CurrentWeather from "./Current_weather/indext";
 import Highlights from "./Highlights";
@@ -14,15 +17,16 @@ import CurrentWeatherLoader from "./Current_weather/CurrentWeatherLoader";
 
 const Home = () => {
   const [openMenu, setOpenMenu] = React.useState(false);
-
-  const { city, status } = useSelector(selectWeather);
-
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
-    dispatch(fetchWeathersAction(city) as any);
-  }, []);
+  const { status, lat, lon }: any = useSelector(selectWeather);
 
+  React.useEffect(() => {
+    dispatch(fetchWeathersAction({ lat, lon }) as any);
+    dispatch(fetchAirsAction({ lat, lon }) as any);
+    dispatch(fetchForecast({ lat, lon }) as any);
+    // dispatch(fetchHourForecast({ lat, lon }) as any);
+  }, [lat, lon]);
   return (
     <>
       <Header setOpenMenu={setOpenMenu} />
@@ -30,11 +34,7 @@ const Home = () => {
         <div className="container">
           <div className="weather-wrapper flex flex-col gap-4">
             <div className="weather-wrapper__top flex justify-between">
-              {status === "pending" ? (
-                <CurrentWeatherLoader />
-              ) : (
-                <CurrentWeather />
-              )}
+              <CurrentWeather />
               <Highlights />
             </div>
             <div className="weather-wrapper__bottom mb-10 flex justify-between">

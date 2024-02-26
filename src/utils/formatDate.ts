@@ -1,5 +1,5 @@
 export const formatDate = (timestamp: number) => {
-  const daysOfWeek = ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
+  const daysOfWeek = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"];
   const months = [
     "Январь",
     "Февраль",

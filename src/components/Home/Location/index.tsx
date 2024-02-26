@@ -1,8 +1,49 @@
 import React from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setCurrentLocation } from "../../../redux/weather/weatherSlice";
+import { setCityAirLocation } from "../../../redux/airPopulation/airSlice";
+import { setCityHourLocation } from "../../../redux/hourForecast/hourForecastSlice";
+import { setCityForecastLocation } from "../../../redux/forecast/forecastSlice";
 
 const Location = () => {
+  const [location, setLocation] = React.useState(null);
+
+  const dispatch = useDispatch();
+
+  // React.useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       setLocation({
+  //         lat: position.coords.latitude,
+  //         lon: position.coords.longitude,
+  //       });
+  //       dispatch(setCurrentLocation(position.coords));
+  //     });
+  //   } else {
+  //     console.log("Ошибка геолокации.");
+  //   }
+  // }, []);
+
+  const getUserLocation = async () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLocation({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        });
+        dispatch(setCurrentLocation(position.coords));
+        dispatch(setCityAirLocation(position.coords));
+        dispatch(setCityHourLocation(position.coords));
+        dispatch(setCityForecastLocation(position.coords));
+      });
+    } else {
+      console.log("Ошибка геолокации.");
+    }
+  };
+
   return (
-    <div className="location">
+    <div className="location" onClick={getUserLocation}>
       <div
         className="location-wrapper flex items-center gap-2 cursor-pointer bg-card_color font-medium text-bg_color
         py-[10px] px-[13px] rounded-full"

@@ -38,11 +38,11 @@ const CurrentWeather: React.FC = () => {
     <div className="current-weather bg-sidebar_color w-[23%] h-[350px] py-5 px-5 rounded-2xl">
       <div className="current-weather__temp flex flex-col items-center">
         <div className="heading text-[40px] font-bold">
-          {main?.temp}
+          {main?.temp?.toFixed(0)}
           <span className="text-[20px]">°C</span>
         </div>
         <div className="condition font-bold text-[18px]">
-          {weather[0].description}
+          {weather[0]?.description}
         </div>
       </div>
       <div className="current-weather__img flex justify-center my-3">

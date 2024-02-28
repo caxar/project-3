@@ -5,15 +5,15 @@ import { selectWeather } from "../../redux/weather/selectors";
 import { fetchWeathersAction } from "../../redux/weather/asyncActions";
 import { fetchAirsAction } from "../../redux/airPopulation/asyncActions";
 import { fetchForecast } from "../../redux/forecast/asyncActions";
-import { fetchHourForecast } from "../../redux/hourForecast/asyncActions";
+// import { fetchHourForecast } from "../../redux/hourForecast/asyncActions
 
 import CurrentWeather from "./Current_weather/indext";
 import Highlights from "./Highlights";
 import Forecast from "./Forecast";
-import HourlyWeather from "./Hourly_weather";
+// import HourlyWeather from "./Hourly_weather
 import Menu from "./Menu";
 import Header from "./Header";
-import CurrentWeatherLoader from "./Current_weather/CurrentWeatherLoader";
+// import CurrentWeatherLoader from "./Current_weather/CurrentWeatherLoader
 
 const Home = () => {
   const [openMenu, setOpenMenu] = React.useState(false);
@@ -25,8 +25,8 @@ const Home = () => {
     dispatch(fetchWeathersAction({ lat, lon }) as any);
     dispatch(fetchAirsAction({ lat, lon }) as any);
     dispatch(fetchForecast({ lat, lon }) as any);
-    // dispatch(fetchHourForecast({ lat, lon }) as any);
   }, [lat, lon]);
+
   return (
     <>
       <Header setOpenMenu={setOpenMenu} />
@@ -37,10 +37,10 @@ const Home = () => {
               <CurrentWeather />
               <Highlights />
             </div>
-            <div className="weather-wrapper__bottom mb-10 flex justify-between">
-              <Forecast />
-              <HourlyWeather />
-            </div>
+            {/* <div className="weather-wrapper__bottom mb-10 flex justify-between"> */}
+            {/* <Forecast /> */}
+            {/* <HourlyWeather /> */}
+            {/* </div> */}
           </div>
         </div>
       </div>

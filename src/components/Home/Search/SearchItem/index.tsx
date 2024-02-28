@@ -2,6 +2,8 @@ import React from "react";
 
 interface SearcProps {
   data: {
+    coord: any;
+    id: number;
     main: {
       temp: number;
     };
@@ -16,11 +18,19 @@ interface SearcProps {
       country: string;
     };
   };
+  onClick: (a: number, b: number) => void;
 }
 
-const SearchItem = ({ data }: SearcProps) => {
+const SearchItem = ({ data, onClick }: SearcProps) => {
+  const handleClick = () => {
+    onClick(data?.coord?.lat, data?.coord?.lon);
+  };
+
   return (
-    <div className="group px-5 search-find__item flex justify-between cursor-pointer items-center hover:bg-blue-600 transition ease-in-out">
+    <div
+      onClick={handleClick}
+      className="group px-5 search-find__item flex justify-between cursor-pointer items-center hover:bg-blue-600 transition ease-in-out"
+    >
       <div className="find__item-left font-bold group-hover:text-slate-300">
         {data?.name}, {data?.sys?.country === "UA" ? "RU" : data?.sys?.country}
       </div>

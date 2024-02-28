@@ -1,39 +1,50 @@
 import React from "react";
 import SearchItem from "./SearchItem";
 import { nanoid } from "nanoid";
+import { useDispatch } from "react-redux";
+
+import { fetchWeathersAction } from "../../../redux/weather/asyncActions";
 
 const Search = () => {
-  const [query, setQuery] = React.useState("");
-  const [cities, setCities] = React.useState([]);
-  const [weatherData, setWeatherData] = React.useState(null);
+  const dispatch = useDispatch();
 
+  // Данные из input
+  const [query, setQuery] = React.useState("");
+  // Комопнент щагрузки города
+  const [cities, setCities] = React.useState([]);
+
+  // Показывать или скрывать предложенные города
+  const [showCities, setShowCities] = React.useState(true);
+
+  // Загрузка города при поиске
   const fetchCities = async () => {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/find?q=${query}&type=like&appid=8d2fcb9f4a085aba30788b5fb43bea6f`
     );
     const data = await response.json();
     setCities(data?.list);
+    setShowCities(true);
   };
 
-  const fetchWeather = async (cityId: any) => {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=8d2fcb9f4a085aba30788b5fb43bea6f`
-    );
-    const data = await response.json();
-    setWeatherData(data);
+  // Передеача координат для оббновление комопнента загрузки данных
+  const fetchWeather = async (lat: any, lon: any) => {
+    dispatch(fetchWeathersAction({ lat, lon }) as any);
   };
 
-  const handleCityClick = (cityId: any) => {
-    fetchWeather(cityId);
+  // при клике запуск функции передачи данных
+  const handleCityClick = (lat: any, lon: any) => {
+    fetchWeather(lat, lon);
+    setShowCities(false);
+    setQuery("");
   };
 
-  console.log(weatherData);
-
+  // При изменении search через input запуск загрузки городов
   React.useEffect(() => {
     if (query) {
       fetchCities();
     }
   }, [query]);
+
   return (
     <div className="search relative">
       <div className="search-block relative bg-sidebar_color w-[550px] rounded-full flex items-center">
@@ -61,23 +72,15 @@ const Search = () => {
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
-      <ul className="search-find bg-sidebar_color w-[90%] translate-x-7 absolute flex flex-col gap-3">
-        {cities?.map((item) => (
-          // <li
-          //   className="search-find__item"
-          //   key={nanoid()}
-          //   onClick={() => handleCityClick(item?.id)}
-          // >
-          //   {item?.name}
-          //   {console.log(item)}
-          // </li>
-          <SearchItem
-            key={nanoid()}
-            onClick={() => handleCityClick(item?.id)}
-            data={item}
-          />
-        ))}
-      </ul>
+      {showCities ? (
+        <ul className="search-find bg-sidebar_color w-[90%] translate-x-7 absolute flex flex-col gap-3">
+          {cities?.map((item) => (
+            <SearchItem key={nanoid()} data={item} onClick={handleCityClick} />
+          ))}
+        </ul>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

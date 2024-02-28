@@ -1,7 +1,9 @@
 import React from "react";
 import { formatDate } from "../../../utils/formatDate";
 import { selectWeather } from "../../../redux/weather/selectors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addFav } from "../../../redux/favoriteList/favSlice";
+import { FavItem } from "../../../redux/favoriteList/types";
 
 interface WeatherProps {
   coord: {
@@ -26,16 +28,63 @@ interface WeatherProps {
 }
 
 const CurrentWeather: React.FC = () => {
+  const dispatch = useDispatch();
+
   const { entities } = useSelector(selectWeather);
 
+  const [addFavInfo, setAddFavInfo] = React.useState<boolean>(false);
+
   // деструктурируем данные
-  const { weather, main, name, sys, dt }: any = entities;
+  const { id, weather, main, name, sys, dt, coord }: any = entities;
+
+  const addFaforite = () => {
+    // ограничения на добавления с помощью типизации favItem
+    const item: FavItem = {
+      id: id,
+      title: name,
+      lat: coord?.lat,
+      lon: coord?.lon,
+    };
+    dispatch(addFav(item));
+    showFavAdd();
+  };
+
+  // Функция запускается при добавлении пиццы
+  const showFavAdd = () => {
+    setAddFavInfo(true);
+    setTimeout(() => setAddFavInfo(false), 3000);
+  };
 
   // проверка что бы не было ошибки при обращении к [0]
   if (!weather) return <></>;
 
   return (
-    <div className="current-weather bg-sidebar_color w-[23%] h-[350px] py-5 px-5 rounded-2xl">
+    <div className="current-weather bg-sidebar_color w-[23%] h-[100%] py-5 px-5 rounded-2xl">
+      <div
+        onClick={() => addFaforite()}
+        className="current-weather__add flex justify-center items-center gap-2 cursor-pointer font-bold
+        bg-card_color text-bg_color
+        py-[5px] px-[10px] rounded-full"
+      >
+        Добавить в избранное
+        <svg
+          width="30px"
+          height="30px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
+            stroke="#000000"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
       <div className="current-weather__temp flex flex-col items-center">
         <div className="heading text-[40px] font-bold">
           {main?.temp?.toFixed(0)}
@@ -48,7 +97,7 @@ const CurrentWeather: React.FC = () => {
       <div className="current-weather__img flex justify-center my-3">
         <img
           className="w-[130px]"
-          src={`https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
+          src={`https://openweathermap.org/img/wn/${weather[0]?.icon}@2x.png`}
           alt=""
         />
       </div>
@@ -70,7 +119,7 @@ const CurrentWeather: React.FC = () => {
         {/* ПН 19, Март  формат вывода*/}
         <span className="font-bold">{formatDate(dt)}</span>
       </div>
-      <div className="current-weather__city flex items-center gap-2">
+      <div className="current-weather__city flex items-center gap-2 mb-1">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

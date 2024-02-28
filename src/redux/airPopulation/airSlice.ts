@@ -18,6 +18,11 @@ export const airSlice = createSlice({
       state.lat = action.payload.latitude;
       state.lon = action.payload.longitude;
     },
+    setCitySearch: (state, action) => {
+      state.lat = action.payload.lat;
+      state.lon = action.payload.lon;
+      // console.log(action);
+    },
   },
 
   extraReducers: (builder) => {
@@ -35,6 +40,6 @@ export const airSlice = createSlice({
   },
 });
 
-export const { setCityAirLocation } = airSlice.actions;
+export const { setCityAirLocation, setCitySearch } = airSlice.actions;
 
 export default airSlice.reducer;

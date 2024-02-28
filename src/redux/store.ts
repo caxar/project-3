@@ -4,6 +4,7 @@ import WeatherReducer from "./weather/weatherSlice";
 import AirReducer from "./airPopulation/airSlice";
 import ForecastReducer from "./forecast/forecastSlice";
 import HourForecastReducer from "./hourForecast/hourForecastSlice";
+import FavoriteReducer from "./favoriteList/favSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     air: AirReducer,
     forecast: ForecastReducer,
     hourForecast: HourForecastReducer,
+    fav: FavoriteReducer,
   },
 });
 

@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFav } from "../../../redux/favoriteList/favSlice";
 import { FavItem } from "../../../redux/favoriteList/types";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 interface WeatherProps {
   coord: {
     lon: number;
@@ -30,6 +33,8 @@ interface WeatherProps {
 const CurrentWeather: React.FC = () => {
   const dispatch = useDispatch();
 
+  const notify = () => toast.success("Успешно добавленно");
+
   const { entities } = useSelector(selectWeather);
 
   const [addFavInfo, setAddFavInfo] = React.useState<boolean>(false);
@@ -49,10 +54,11 @@ const CurrentWeather: React.FC = () => {
     showFavAdd();
   };
 
-  // Функция запускается при добавлении пиццы
+  // Функция запускается при добавлении favorite
   const showFavAdd = () => {
-    setAddFavInfo(true);
-    setTimeout(() => setAddFavInfo(false), 3000);
+    // setAddFavInfo(true);
+    // setTimeout(() => setAddFavInfo(false), 3000);
+    notify();
   };
 
   // проверка что бы не было ошибки при обращении к [0]
@@ -144,6 +150,24 @@ const CurrentWeather: React.FC = () => {
           {name}, {sys?.country === "UA" ? "RU" : sys?.country}
         </div>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      {/* {addFavInfo && (
+        <div className={`fixed-fav__add ${addFavInfo ? "fixed" : ""}`}>
+          <p>Добавлен Город:</p>
+          <span>{name}</span>
+        </div>
+      )} */}
     </div>
   );
 };

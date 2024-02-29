@@ -23,6 +23,7 @@ const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
     }
   };
 
+  // Добавление в localstorage
   React.useEffect(() => {
     if (ref.current) {
       const dataLocalStorage = JSON.stringify(items);
@@ -74,7 +75,7 @@ const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
               </div>
               <div className="menu-content__item-block flex flex-col gap-2">
                 {items.map((item) => (
-                  <FavItem key={nanoid()} {...item} />
+                  <FavItem key={nanoid()} {...item} setOpenMenu={setOpenMenu} />
                 ))}
               </div>
             </div>

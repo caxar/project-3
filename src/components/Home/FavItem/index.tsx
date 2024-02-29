@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { removeFav } from "../../../redux/favoriteList/favSlice";
+import { fetchWeathersAction } from "../../../redux/weather/asyncActions";
 
 interface FavProps {
   id: string | number;
@@ -8,12 +9,27 @@ interface FavProps {
   lat: number;
   lon: number;
   count?: number | undefined;
+  setOpenMenu: (i: boolean) => void;
 }
 
-const FavItem: React.FC<FavProps> = ({ id, title, lat, lon, count }) => {
+const FavItem: React.FC<FavProps> = ({
+  id,
+  title,
+  lat,
+  lon,
+  count,
+  setOpenMenu,
+}) => {
   const dispatch = useDispatch();
+
+  const selectFavItemCity = () => {
+    dispatch(fetchWeathersAction({ lat, lon }) as any);
+    setOpenMenu(false);
+  };
+
   return (
     <div
+      onClick={() => selectFavItemCity()}
       className="fav-wrapper text-bg_color font-bold cursor-pointer
      bg-card_color rounded-md py-3 px-2 transition ease-in-out hover:bg-grab_color "
     >

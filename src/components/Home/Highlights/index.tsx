@@ -15,13 +15,13 @@ const Highlights = () => {
   const airData = list?.[0]?.components;
 
   return (
-    <div className="weather-items bg-sidebar_color w-[75%] py-5 px-7 rounded-2xl">
+    <div className="weather-items bg-sidebar_color py-5 px-7 w-[100%] rounded-2xl md:w-[75%]">
       <div className="weather-items__title text-[22px] font-bold mb-3">
         Прогноз на сегодня
       </div>
       <div className="weather-items__wrapper">
-        <div className="weather-items__top flex justify-between mb-3">
-          <div className="items-top__air w-[49%] bg-bg_color rounded-2xl py-5 px-5">
+        <div className="weather-items__top flex flex-col justify-between md:flex-row mb-3 gap-3">
+          <div className="items-top__air bg-bg_color rounded-2xl py-3 px-3 md:w-[w-49%]">
             <div className="top-air__title text-[18px] font-bold mb-3">
               Индекс качества воздуха
             </div>
@@ -44,7 +44,7 @@ const Highlights = () => {
                 </svg>
               </div>
               {/* <div className="air-wrapper__text">1.6m/s SE</div> */}
-              <div className="air-wrapper__block flex justify-between gap-5">
+              <div className="air-wrapper__block grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-5">
                 <div className="air-wrapper__item w-[90px] flex flex-col items-center">
                   <div className="title">PM25</div>
                   <div className="text text-[30px] font-bold">
@@ -72,12 +72,12 @@ const Highlights = () => {
               </div>
             </div>
           </div>
-          <div className="items-top__solar w-[49%] bg-bg_color rounded-2xl py-5 px-5">
+          <div className="items-top__solar bg-bg_color rounded-2xl py-3 px-3 md:w-[49%]">
             <div className="top-solar__title text-[18px] font-bold mb-3">
               Рассвет & Закат
             </div>
             <div className="top-solar__wrapper flex justify-between">
-              <div className="solar-sunrise flex items-center gap-4">
+              <div className="solar-sunrise flex flex-col items-center gap-4 md:flex-row">
                 <svg
                   fill="#fff"
                   width="40px"
@@ -88,7 +88,7 @@ const Highlights = () => {
                   <path d="M23,16a1,1,0,0,1-1,1H2a1,1,0,0,1,0-2H22A1,1,0,0,1,23,16Zm-5,5a1,1,0,0,0,0-2H6a1,1,0,0,0,0,2ZM7,12a1,1,0,0,0,2,0,3,3,0,0,1,6,0,1,1,0,0,0,2,0A5,5,0,0,0,7,12Zm4-7a1,1,0,0,0,2,0V4a1,1,0,0,0-2,0Zm7,7a1,1,0,0,0,1,1h1a1,1,0,0,0,0-2H19A1,1,0,0,0,18,12ZM4,11a1,1,0,0,0,0,2H5a1,1,0,0,0,0-2ZM5.636,5.636a1,1,0,0,0,0,1.414l.707.707A1,1,0,0,0,7.757,6.343L7.05,5.636A1,1,0,0,0,5.636,5.636Zm11.314,0-.707.707a1,1,0,1,0,1.414,1.414l.707-.707A1,1,0,1,0,16.95,5.636Z" />
                 </svg>
 
-                <div className="text">
+                <div className="text flex flex-col items-center">
                   <div className="text-title">Рассвет</div>
                   <span className="text-[30px] font-bold">
                     {new Date(sys?.sunrise * 1000).toLocaleTimeString("en-US", {
@@ -99,7 +99,7 @@ const Highlights = () => {
                   </span>
                 </div>
               </div>
-              <div className="solar-sunset flex items-center gap-4">
+              <div className="solar-sunset flex flex-col items-center gap-4 md:flex-row">
                 <svg
                   width="40px"
                   height="40px"
@@ -115,7 +115,7 @@ const Highlights = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <div className="text">
+                <div className="text flex flex-col items-center">
                   <div className="text-title">Закат</div>
                   <span className="text-[30px] font-bold">
                     {new Date(sys?.sunset * 1000).toLocaleTimeString("en-US", {
@@ -129,10 +129,10 @@ const Highlights = () => {
             </div>
           </div>
         </div>
-        <div className="weather-items__bottom flex justify-between">
-          <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
+        <div className="weather-items__bottom flex justify-between flex-col gap-3 md:flex-row">
+          <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl">
             <div className="bottom-item__title mb-3">Влажность</div>
-            <div className="bottom-item__block flex items-center justify-between w-[170px]">
+            <div className="bottom-item__block flex items-center justify-center gap-2 md:justify-between lg:w-[170px]">
               <div className="item-block__img">
                 <svg
                   width="40px"
@@ -168,9 +168,9 @@ const Highlights = () => {
             </div>
           </div>
           {/* 2 */}
-          <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
+          <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl">
             <div className="bottom-item__title mb-3">Давление</div>
-            <div className="bottom-item__block flex items-center justify-between w-[170px]">
+            <div className="bottom-item__block flex items-center justify-center gap-2 md:justify-between lg:w-[170px]">
               <div className="item-block__img">
                 <svg
                   width="40px"
@@ -218,9 +218,9 @@ const Highlights = () => {
             </div>
           </div>
           {/* 3 */}
-          <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
+          <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl">
             <div className="bottom-item__title mb-3">Видимость</div>
-            <div className="bottom-item__block flex items-center justify-between w-[170px]">
+            <div className="bottom-item__block flex items-center justify-center gap-2 md:justify-between lg:w-[170px]">
               <div className="item-block__img">
                 <svg
                   fill="#fff"
@@ -263,9 +263,9 @@ const Highlights = () => {
             </div>
           </div>
           {/* 4 */}
-          <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
+          <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl">
             <div className="bottom-item__title mb-3">Ощущается как</div>
-            <div className="bottom-item__block flex items-center justify-between w-[170px]">
+            <div className="bottom-item__block flex items-center justify-center gap-2 md:justify-between lg:w-[170px]">
               <div className="item-block__img">
                 <svg
                   width="40px"
@@ -290,9 +290,9 @@ const Highlights = () => {
             </div>
           </div>
           {/* 5 */}
-          <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl ">
+          <div className="bottom-item bg-bg_color py-3 px-3 rounded-2xl">
             <div className="bottom-item__title mb-3">Скорость ветра</div>
-            <div className="bottom-item__block flex items-center justify-between w-[170px]">
+            <div className="bottom-item__block flex items-center justify-center gap-2 md:justify-between lg:w-[170px]">
               <div className="item-block__img">
                 <svg
                   width="40px"

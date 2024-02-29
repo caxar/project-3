@@ -13,6 +13,7 @@ import Forecast from "./Forecast";
 // import HourlyWeather from "./Hourly_weather
 import Menu from "./Menu";
 import Header from "./Header";
+import CurrentWeatherLoader from "./Current_weather/CurrentWeatherLoader";
 // import CurrentWeatherLoader from "./Current_weather/CurrentWeatherLoader
 
 const Home = () => {
@@ -32,9 +33,13 @@ const Home = () => {
       <Header setOpenMenu={setOpenMenu} />
       <div className="weather">
         <div className="container">
-          <div className="weather-wrapper flex flex-col gap-4">
-            <div className="weather-wrapper__top flex justify-between">
-              <CurrentWeather />
+          <div className="weather-wrapper gap-4 flex flex-col justify-center lg:justify-between">
+            <div className="weather-wrapper__top flex flex-col items-center gap-4 lg:flex-row md:items-baseline">
+              {status === "pending" ? (
+                <CurrentWeatherLoader />
+              ) : (
+                <CurrentWeather />
+              )}
               <Highlights />
             </div>
             {/* <div className="weather-wrapper__bottom mb-10 flex justify-between"> */}

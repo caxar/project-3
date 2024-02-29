@@ -8,6 +8,8 @@ import { FavItem } from "../../../redux/favoriteList/types";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import "./Curent.css";
+
 interface WeatherProps {
   coord: {
     lon: number;
@@ -65,15 +67,16 @@ const CurrentWeather: React.FC = () => {
   if (!weather) return <></>;
 
   return (
-    <div className="current-weather bg-sidebar_color w-[23%] h-[100%] py-5 px-5 rounded-2xl">
+    <div className="current-weather bg-sidebar_color w-[100%] h-[100%] py-5 px-5 rounded-2xl lg:w-[23%]">
       <div
         onClick={() => addFaforite()}
-        className="current-weather__add flex justify-center items-center gap-2 cursor-pointer font-bold
+        className="group current-weather__add flex justify-center items-center gap-2 cursor-pointer font-medium
         bg-card_color text-bg_color
-        py-[5px] px-[10px] rounded-full"
+        py-[5px] px-[10px] rounded-full hover:bg-grab_color transition ease-in-out"
       >
-        Добавить в избранное
+        <div className="hidden xl:block ">В избранное</div>
         <svg
+          className=""
           width="30px"
           height="30px"
           viewBox="0 0 24 24"

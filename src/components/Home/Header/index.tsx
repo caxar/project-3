@@ -18,14 +18,15 @@ const Header: React.FC<HeaderProps> = ({ setOpenMenu }) => {
 
   return (
     <div className="header container py-[20px] mb-[60px]">
-      <div className="header-wrapper flex justify-between items-center">
-        <div className="header-wrapper__block flex items-center gap-[20px]">
+      <div className="header-wrapper flex flex-col gap-4 items-center md:flex-row md:justify-between">
+        <div className=" header-wrapper__block flex items-center gap-2">
           <div
             onClick={() => setOpenMenu(true)}
-            className="header-block__menu bg-sidebar_color rounded-full w-[40px] h-[40px] flex
-          justify-center items-center cursor-pointer hover:bg-card_color"
+            className="group header-block__menu bg-sidebar_color rounded-full w-[40px] h-[40px] flex
+          justify-center items-center cursor-pointer hover:bg-grab_color transition ease-in-out"
           >
             <svg
+              className="group-hover:stroke-bg_color transition ease-in-out"
               width="25px"
               height="25px"
               viewBox="-0.5 0 25 25"
@@ -72,11 +73,13 @@ const Header: React.FC<HeaderProps> = ({ setOpenMenu }) => {
             </span>
           </div>
         </div>
-        <div className="header-wrapper__search">
-          <Search />
-        </div>
-        <div className="header-wrapper__location">
-          <Location />
+        <div className="flex gap-2">
+          <div className="header-wrapper__search">
+            <Search />
+          </div>
+          <div className="header-wrapper__location">
+            <Location />
+          </div>
         </div>
       </div>
     </div>

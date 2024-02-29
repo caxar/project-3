@@ -47,7 +47,7 @@ const Search = () => {
 
   return (
     <div className="search relative">
-      <div className="search-block relative bg-sidebar_color w-[550px] rounded-full flex items-center">
+      <div className="search-block relative bg-sidebar_color w-[100%] rounded-full flex items-center md:w-[550px]">
         <div className="search-block__icon ml-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@ const Search = () => {
         />
       </div>
       {showCities ? (
-        <ul className="search-find bg-sidebar_color w-[90%] translate-x-7 absolute flex flex-col gap-3">
+        <ul className="search-find bg-sidebar_color w-[90%] translate-x-3 translate-y-[-2px]  absolute flex flex-col gap-3 md:translate-x-7">
           {cities?.map((item) => (
             <SearchItem key={nanoid()} data={item} onClick={handleCityClick} />
           ))}

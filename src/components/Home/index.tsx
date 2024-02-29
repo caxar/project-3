@@ -35,10 +35,10 @@ const Home = () => {
     if (status === "pending") {
       setShowLoader(true);
 
-      // Задержка перед сменой состояния на "succeeded"
+      // Задержка статуса status "Pending, succedded"
       setTimeout(() => {
         setShowLoader(false);
-      }, 1000); // Задержка в миллисекундах (1 секунда в данном случае)
+      }, 1000);
     }
   }, [status]);
 

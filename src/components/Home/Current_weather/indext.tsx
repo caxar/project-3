@@ -8,8 +8,6 @@ import { FavItem } from "../../../redux/favoriteList/types";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import "./Curent.css";
-
 interface WeatherProps {
   coord: {
     lon: number;
@@ -35,7 +33,8 @@ interface WeatherProps {
 const CurrentWeather: React.FC = () => {
   const dispatch = useDispatch();
 
-  const notify = () => toast.success("Успешно добавленно");
+  const notifyResolve = () => toast.success("Город успешно добавлен");
+  const notifyReject = () => toast.warn("Город уже добавлен");
 
   const { entities } = useSelector(selectWeather);
 
@@ -52,15 +51,26 @@ const CurrentWeather: React.FC = () => {
       lat: coord?.lat,
       lon: coord?.lon,
     };
-    dispatch(addFav(item));
-    showFavAdd();
+
+    // Пред добавлением проверям есть ли элемент в localstorage с таким id
+    const itemsFavoriteList = localStorage.getItem("favItem");
+    const itemDataList = itemsFavoriteList ? JSON.parse(itemsFavoriteList) : [];
+
+    const isAlreadyAdded = itemDataList.some(
+      (favItem: { id: any }) => favItem.id === id
+    );
+
+    if (isAlreadyAdded) {
+      notifyReject();
+    } else {
+      dispatch(addFav(item));
+      showFavAdd();
+    }
   };
 
   // Функция запускается при добавлении favorite
   const showFavAdd = () => {
-    // setAddFavInfo(true);
-    // setTimeout(() => setAddFavInfo(false), 3000);
-    notify();
+    notifyResolve();
   };
 
   // проверка что бы не было ошибки при обращении к [0]

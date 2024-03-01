@@ -7,6 +7,7 @@ import { FavItem } from "../../../redux/favoriteList/types";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { formatTemp } from "../../../utils/formatTemp";
 
 interface WeatherProps {
   coord: {
@@ -106,7 +107,8 @@ const CurrentWeather: React.FC = () => {
       </div>
       <div className="current-weather__temp flex flex-col items-center">
         <div className="heading text-[40px] font-bold">
-          {main?.temp?.toFixed(0)}
+          {/* {main?.temp?.toFixed(0)} */}
+          {formatTemp(main?.temp)}
           <span className="text-[20px]">°C</span>
         </div>
         <div className="condition font-bold text-[18px]">
@@ -159,8 +161,18 @@ const CurrentWeather: React.FC = () => {
           />
         </svg>
 
-        <div className="weather-city__title font-bold">
-          {name}, {sys?.country === "UA" ? "RU" : sys?.country}
+        <div className="weather-city__title font-bold flex items-center gap-2">
+          <div>
+            {name}, {sys?.country === "UA" ? "RU" : sys?.country}
+          </div>
+          <img
+            src={`https://openweathermap.org/images/flags/${(sys?.country ===
+            "UA"
+              ? "RU"
+              : sys?.country
+            ).toLowerCase()}.png`}
+            alt=""
+          />
         </div>
       </div>
       <ToastContainer
@@ -175,12 +187,6 @@ const CurrentWeather: React.FC = () => {
         pauseOnHover
         theme="dark"
       />
-      {/* {addFavInfo && (
-        <div className={`fixed-fav__add ${addFavInfo ? "fixed" : ""}`}>
-          <p>Добавлен Город:</p>
-          <span>{name}</span>
-        </div>
-      )} */}
     </div>
   );
 };

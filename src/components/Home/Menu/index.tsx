@@ -12,6 +12,9 @@ import FavItem from "../FavItem";
 import { nanoid } from "nanoid";
 
 const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
+  const [isChecked, setIsChecked] = React.useState(
+    localStorage.getItem("forecastData") === "true"
+  );
   const { items } = useSelector(selectFav);
   const ref = React.useRef(false);
 
@@ -32,11 +35,21 @@ const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
     ref.current = true;
   }, [items]);
 
+  // Включаем или отключаем отображение Прогноз на 5 дней
+
+  const handleChange = () => {
+    setIsChecked((prevState) => {
+      const changeForecast = !prevState;
+      localStorage.setItem("forecastData", changeForecast);
+      return changeForecast;
+    });
+  };
+
   return (
     <div onClick={(e) => handleClickOut(e)} className="menu-block">
       <div className="menu-bg"></div>
       <div
-        className={`menu-block__content bg-sidebar_color py-[40px] px-4 ${
+        className={`menu-block__content bg-sidebar_color py-[40px] px-4  ${
           openMenu ? "showMenu" : ""
         }`}
       >
@@ -63,27 +76,103 @@ const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
             </g>
           </svg>
         </div>
-        <div className="menu-content__wrapper">
+        <div className="menu-content__wrapper overflow-auto">
           {items?.length == 0 && (
-            <div className="font-bold">Еще нет сохраненных городов</div>
+            <div className="font-bold mb-4">Нет добавленных городов</div>
           )}
 
           {items?.length > 0 && (
-            <div className="wrapper-content__block">
-              <div className="content-block__title text-[20px] mb-[20px]">
+            <div className="wrapper-content__block mb-5">
+              <div className="content-block__title text-[18px] font-bold mb-[20px]">
                 Добавленные города:
               </div>
               <div className="menu-content__item-block flex flex-col gap-2">
-                {items.map((item) => (
+                {items?.map((item) => (
                   <FavItem key={nanoid()} {...item} setOpenMenu={setOpenMenu} />
                 ))}
               </div>
             </div>
           )}
 
-          {/* <div className="menu-content__item">
-            Настройки
-          </div> */}
+          <div className="menu-content__item border-t-2 py-2">
+            <div className="menu-content__title text-[18px] font-bold">
+              Настройки отображения:
+            </div>
+            <div className="menu-content__block">
+              {/* 1 */}
+              <div className="content-block__item inline-flex items-center">
+                <div
+                  className={`content-block__title text-[17px] flex flex-col items-center`}
+                >
+                  - Прогноз на 5 дней{" "}
+                </div>
+                <label
+                  className="relative flex items-center p-3 rounded-full cursor-pointer"
+                  htmlFor="customStyle"
+                >
+                  <input
+                    type="checkbox"
+                    checked={isChecked}
+                    onChange={handleChange}
+                    className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-bg_color transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:bg-grab_color checked:bg-grab_color checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                    id="customStyle"
+                  />
+                  <span className="absolute text-heading_color transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-3.5 w-3.5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      stroke-width="1"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </span>
+                </label>
+              </div>
+              {/* 2 */}
+              <div className="content-block__item inline-flex items-center">
+                <div
+                  className={`content-block__title text-[17px] flex flex-col items-center`}
+                >
+                  - Рассвет & Закат{" "}
+                </div>
+                <label
+                  className="relative flex items-center p-3 rounded-full cursor-pointer"
+                  htmlFor="customStyle"
+                >
+                  <input
+                    type="checkbox"
+                    checked={isChecked}
+                    onChange={handleChange}
+                    className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-bg_color transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:bg-grab_color checked:bg-grab_color checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                    id="customStyle"
+                  />
+                  <span className="absolute text-heading_color transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-3.5 w-3.5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      stroke-width="1"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -31,8 +31,16 @@ const SearchItem = ({ data, onClick }: SearcProps) => {
       onClick={handleClick}
       className="group px-5 search-find__item flex justify-between cursor-pointer items-center hover:bg-blue-600 transition ease-in-out"
     >
-      <div className="find__item-left font-bold group-hover:text-slate-300">
+      <div className="find__item-left font-bold group-hover:text-slate-300 flex items-center gap-2">
         {data?.name}, {data?.sys?.country === "UA" ? "RU" : data?.sys?.country}
+        <img
+          src={`https://openweathermap.org/images/flags/${(data?.sys
+            ?.country === "UA"
+            ? "RU"
+            : data?.sys?.country
+          ).toLowerCase()}.png`}
+          alt=""
+        />
       </div>
       <div className="find__item-right flex items-center">
         <div className="item-right__tex">{data?.weather[0]?.description}</div>

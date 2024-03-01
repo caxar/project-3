@@ -19,7 +19,7 @@ const Search = () => {
   // Загрузка города при поиске
   const fetchCities = async () => {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/find?q=${query}&type=like&appid=8d2fcb9f4a085aba30788b5fb43bea6f`
+      `https://api.openweathermap.org/data/2.5/find?q=${query}&type=like&appid=8d2fcb9f4a085aba30788b5fb43bea6f&lang=ru`
     );
     const data = await response.json();
     setCities(data?.list);
@@ -45,8 +45,28 @@ const Search = () => {
     }
   }, [query]);
 
+  // Закрыть Список город при клике вне карточки поиска
+  const handleClickOut = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = e.target as Element;
+
+    // if (
+    //   !el.classList.contains("search-cities__input") ||
+    //   !el.classList.contains("search-block")
+    // ) {
+    //   setShowCities(!showCities);
+    // }
+    // console.log(el);
+    setShowCities(!showCities);
+    setQuery("");
+    setCities([]);
+  };
+
   return (
-    <div className="search relative">
+    <div
+      className="search relative"
+      // onClick={(e) => handleClickOut(e)}
+      onPointerLeave={(e) => handleClickOut(e)}
+    >
       <div className="search-block relative bg-sidebar_color w-[100%] rounded-full flex items-center md:w-[550px]">
         <div className="search-block__icon ml-4">
           <svg
@@ -65,7 +85,7 @@ const Search = () => {
           </svg>
         </div>
         <input
-          className="bg-transparent w-full h-full py-[10px] pl-[10px] pr-[20px]"
+          className="search-cities__input bg-transparent w-full h-full py-[10px] pl-[10px] pr-[20px]"
           type="text"
           placeholder="Поиск по городу"
           value={query}

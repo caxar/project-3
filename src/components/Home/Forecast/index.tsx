@@ -5,13 +5,14 @@ import { nanoid } from "nanoid";
 import { formatDate } from "../../../utils/formatDate";
 
 const Forecast = () => {
+  const [letTest, setLetTest] = React.useState([]);
   const dispatch = useDispatch();
 
   const entitiesForecast = useSelector(selectForecast);
 
   if (!entitiesForecast) return <></>;
 
-  const data = entitiesForecast?.entitiesForecast?.list;
+  // const data = entitiesForecast?.entitiesForecast?.list;
 
   return (
     <div className="forecast bg-sidebar_color w-[23%] h-[100%] py-5 px-5 rounded-2xl">
@@ -19,7 +20,7 @@ const Forecast = () => {
         Прогноз на 5 дней
       </div>
       <div className="forecast-wrapper flex flex-col">
-        {data?.map((item: any) => (
+        {/* {data?.map((item: any) => (
           <div
             key={nanoid()}
             className="forecast-wrapper__item flex items-center justify-between"
@@ -39,7 +40,7 @@ const Forecast = () => {
               </div>
             </div>
           </div>
-        ))}
+        ))} */}
         {/* <div className="forecast-wrapper__item flex items-center justify-between">
           <div className="forecast-item__day">Ср, Февраль 21</div>
           <div className="forecast-item__block flex items-center w-[110px] ">

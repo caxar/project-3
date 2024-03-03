@@ -1,4 +1,5 @@
 import React from "react";
+import { FormatCountry } from "../../../../utils/formatCountry";
 
 interface SearcProps {
   data: {
@@ -32,13 +33,11 @@ const SearchItem = ({ data, onClick }: SearcProps) => {
       className="group px-5 search-find__item flex justify-between cursor-pointer items-center hover:bg-blue-600 transition ease-in-out"
     >
       <div className="find__item-left font-bold group-hover:text-slate-300 flex items-center gap-2">
-        {data?.name}, {data?.sys?.country === "UA" ? "RU" : data?.sys?.country}
+        {data?.name}, {FormatCountry(data?.sys?.country)}
         <img
-          src={`https://openweathermap.org/images/flags/${(data?.sys
-            ?.country === "UA"
-            ? "RU"
-            : data?.sys?.country
-          ).toLowerCase()}.png`}
+          src={`https://openweathermap.org/images/flags/${FormatCountry(
+            data?.sys?.country
+          )}.png`}
           alt=""
         />
       </div>

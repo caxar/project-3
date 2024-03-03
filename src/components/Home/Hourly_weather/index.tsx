@@ -43,7 +43,6 @@ const HourlyWeather = () => {
           slidesPerView={6}
           spaceBetween={30}
           onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
         >
           {dataItem?.map((forecast: any) => (
             <SwiperSlide key={nanoid()}>

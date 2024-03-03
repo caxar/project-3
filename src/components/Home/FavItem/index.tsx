@@ -4,6 +4,7 @@ import { removeFav } from "../../../redux/favoriteList/favSlice";
 import { fetchWeathersAction } from "../../../redux/weather/asyncActions";
 import { fetchHourForecast } from "../../../redux/hourForecast/asyncActions";
 import { fetchAirsAction } from "../../../redux/airPopulation/asyncActions";
+import { FormatCountry } from "../../../utils/formatCountry";
 
 interface FavProps {
   id: string | number;
@@ -11,6 +12,7 @@ interface FavProps {
   lat: number;
   lon: number;
   count?: number | undefined;
+  country: string;
   setOpenMenu: (i: boolean) => void;
 }
 
@@ -20,6 +22,7 @@ const FavItem: React.FC<FavProps> = ({
   lat,
   lon,
   count,
+  country,
   setOpenMenu,
 }) => {
   const dispatch = useDispatch();
@@ -40,7 +43,20 @@ const FavItem: React.FC<FavProps> = ({
         onClick={() => selectFavItemCity()}
         className="fav-wrapper__item flex justify-between items-center w-[90%] py-3 px-2"
       >
-        <div className="wrapper-item__title">{title}</div>
+        <div className="wrapper-item__title flex items-center gap-1">
+          {title},
+          <div className="title-country flex items-center gap-2">
+            <span>{FormatCountry(country)}</span>
+            <span>
+              <img
+                src={`https://openweathermap.org/images/flags/${FormatCountry(
+                  country
+                )}.png`}
+                alt=""
+              />
+            </span>
+          </div>
+        </div>
       </div>
       <div
         onClick={() => dispatch(removeFav(id))}

@@ -8,6 +8,7 @@ import { FavItem } from "../../../redux/favoriteList/types";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { formatTemp } from "../../../utils/formatTemp";
+import { FormatCountry } from "../../../utils/formatCountry";
 
 interface WeatherProps {
   coord: {
@@ -51,6 +52,7 @@ const CurrentWeather: React.FC = () => {
       title: name,
       lat: coord?.lat,
       lon: coord?.lon,
+      country: sys?.country,
     };
 
     // Пред добавлением проверям есть ли элемент в localstorage с таким id
@@ -166,11 +168,9 @@ const CurrentWeather: React.FC = () => {
             {name}, {sys?.country === "UA" ? "RU" : sys?.country}
           </div>
           <img
-            src={`https://openweathermap.org/images/flags/${(sys?.country ===
-            "UA"
-              ? "RU"
-              : sys?.country
-            ).toLowerCase()}.png`}
+            src={`https://openweathermap.org/images/flags/${FormatCountry(
+              sys?.country
+            )}.png`}
             alt=""
           />
         </div>

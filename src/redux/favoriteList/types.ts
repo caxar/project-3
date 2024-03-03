@@ -4,6 +4,7 @@ export type FavItem = {
   lat: number;
   lon: number;
   count?: number | undefined;
+  country: string;
 };
 
 export interface FavSliceState {

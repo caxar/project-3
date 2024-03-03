@@ -12,10 +12,19 @@ import FavItem from "../FavItem";
 import { nanoid } from "nanoid";
 
 const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
-  const [isChecked, setIsChecked] = React.useState(
+  // загрузка соостояния показывать или скрывать блок прогноза ил localstorage
+  const [isCheckedForecast, setIsCheckedForecast] = React.useState(
     localStorage.getItem("forecastData") === "true"
   );
+
+  // загрузка соостояния показывать или скрывать блок Рассвет и заказт ил localstorage
+  const [isCheckedSun, setSiCheckedSun] = React.useState(
+    localStorage.getItem("solarData") === "true"
+  );
+
+  // ДАнные из slice о добавленных городах в избранное
   const { items } = useSelector(selectFav);
+
   const ref = React.useRef(false);
 
   // Закрыть меню при клике вне карточки товара
@@ -36,12 +45,20 @@ const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
   }, [items]);
 
   // Включаем или отключаем отображение Прогноз на 5 дней
-
-  const handleChange = () => {
-    setIsChecked((prevState) => {
+  const handleChangeForecast = () => {
+    setIsCheckedForecast((prevState) => {
       const changeForecast = !prevState;
       localStorage.setItem("forecastData", changeForecast);
       return changeForecast;
+    });
+  };
+
+  // Включаем или отключаем отображение рассвета и закат
+  const handleChangeSun = () => {
+    setSiCheckedSun((prevState) => {
+      const changeSun = !prevState;
+      localStorage.setItem("solarData", changeSun);
+      return changeSun;
     });
   };
 
@@ -76,9 +93,11 @@ const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
             </g>
           </svg>
         </div>
-        <div className="menu-content__wrapper overflow-auto">
+        <div className="menu-content__wrapper overflow-y-auto px-3 ">
           {items?.length == 0 && (
-            <div className="font-bold mb-4">Нет добавленных городов</div>
+            <div className="mb-4 text-[18px] font-bold">
+              Нет добавленных городов
+            </div>
           )}
 
           {items?.length > 0 && (
@@ -112,8 +131,8 @@ const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
                 >
                   <input
                     type="checkbox"
-                    checked={isChecked}
-                    onChange={handleChange}
+                    checked={isCheckedForecast}
+                    onChange={handleChangeForecast}
                     className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-bg_color transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:bg-grab_color checked:bg-grab_color checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
                     id="customStyle"
                   />
@@ -148,8 +167,8 @@ const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
                 >
                   <input
                     type="checkbox"
-                    checked={isChecked}
-                    onChange={handleChange}
+                    checked={isCheckedSun}
+                    onChange={handleChangeSun}
                     className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-bg_color transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:bg-grab_color checked:bg-grab_color checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
                     id="customStyle"
                   />

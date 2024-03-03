@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #999 #333;
+}
+
 body {
   background: #111015;
   color: #d9d9d9;

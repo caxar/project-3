@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ setOpenMenu }) => {
 
   return (
     <div className="header container py-[20px] mb-[60px]">
-      <div className="header-wrapper flex flex-col gap-4 items-center md:flex-row md:justify-between">
+      <div className="header-wrapper flex flex-col gap-4 items-center lg:flex-row lg:justify-between">
         <div className=" header-wrapper__block flex items-center gap-2">
           <div
             onClick={() => setOpenMenu(true)}

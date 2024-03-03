@@ -20,7 +20,7 @@
 }
 
 .menu-block .menu-block__content {
-  width: 300px;
+  width: 350px;
   height: 100%;
   /* background: #fff; */
   position: relative;
@@ -34,6 +34,11 @@
 .menu-block .menu-block__content.showMenu {
   transform: translateX(0%);
   animation: showMenu 0.3s forwards;
+}
+
+.menu-block .menu-block__content .menu-content__wrapper {
+  scrollbar-color: #999 #333;
+  scrollbar-width: thin;
 }
 
 @keyframes showMenu {

@@ -35,7 +35,7 @@ const SearchItem = ({ data, onClick }: SearcProps) => {
       <div className="find__item-left font-bold group-hover:text-slate-300 flex items-center gap-2">
         {data?.name}, {FormatCountry(data?.sys?.country)}
         <img
-          src={`https://openweathermap.org/images/flags/${FormatCountry(
+          src={`${process.env.REACT_APP_FLAG_URL}${FormatCountry(
             data?.sys?.country
           )}.png`}
           alt=""
@@ -46,7 +46,7 @@ const SearchItem = ({ data, onClick }: SearcProps) => {
         <div className="item-right__img w-[50px]">
           <img
             className="w-[100%]"
-            src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}@2x.png`}
+            src={`${process.env.REACT_APP_ICON_URL}${data?.weather[0]?.icon}@2x.png`}
             alt=""
           />
         </div>

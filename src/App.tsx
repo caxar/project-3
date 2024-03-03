@@ -6,6 +6,9 @@ import { store } from "./redux/store";
 
 import Home from "./components/Home";
 
+// import dotenv from "dotenv";
+// dotenv.config();
+
 import "./App.css";
 
 const App = () => {

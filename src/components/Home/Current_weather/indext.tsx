@@ -120,7 +120,7 @@ const CurrentWeather: React.FC = () => {
       <div className="current-weather__img flex justify-center my-3">
         <img
           className="w-[130px]"
-          src={`https://openweathermap.org/img/wn/${weather[0]?.icon}@2x.png`}
+          src={`${process.env.REACT_APP_ICON_URL}${weather[0]?.icon}@2x.png`}
           alt=""
         />
       </div>
@@ -168,7 +168,7 @@ const CurrentWeather: React.FC = () => {
             {name}, {sys?.country === "UA" ? "RU" : sys?.country}
           </div>
           <img
-            src={`https://openweathermap.org/images/flags/${FormatCountry(
+            src={`${process.env.REACT_APP_FLAG_URL}/${FormatCountry(
               sys?.country
             )}.png`}
             alt=""

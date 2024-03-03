@@ -7,7 +7,7 @@ export const fetchAirsAction = createAsyncThunk(
   async ({ lat, lon }: { lat: number; lon: number }) => {
     try {
       const response = await axios.get(
-        `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=8d2fcb9f4a085aba30788b5fb43bea6f`
+        `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`
       );
       if (response.data) {
         return response.data;

@@ -16,7 +16,6 @@ import Header from "./Header";
 
 import { Triangle } from "react-loader-spinner";
 import HourlyWeather from "./Hourly_weather";
-import axios from "axios";
 
 const Home = () => {
   const [openMenu, setOpenMenu] = React.useState(false);
@@ -53,7 +52,7 @@ const Home = () => {
         <div className="container">
           <div className="weather-wrapper gap-4 flex flex-col justify-center lg:justify-between">
             {loader ? (
-              <div className="Loader flex justify-center items-center w-[100%] h-[100%] bg-black bg-opacity-50 fixed top-0 left-0 w-screen h-screen">
+              <div className="Loader flex justify-center items-center bg-black bg-opacity-50 fixed top-0 left-0 w-screen h-screen">
                 <Triangle
                   visible={true}
                   height="80"

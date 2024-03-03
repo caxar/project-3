@@ -58,7 +58,7 @@ const HourlyWeather = () => {
                 </div>
                 <div className="weather-item__img">
                   <img
-                    src={`https://openweathermap.org/img/wn/${forecast?.weather[0]?.icon}@2x.png`}
+                    src={`${process.env.REACT_APP_ICON_URL}${forecast?.weather[0]?.icon}@2x.png`}
                     alt=""
                   />
                 </div>

@@ -19,7 +19,7 @@ const Search = () => {
   // Загрузка города при поиске
   const fetchCities = async () => {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/find?q=${query}&type=like&appid=8d2fcb9f4a085aba30788b5fb43bea6f&lang=ru`
+      `https://api.openweathermap.org/data/2.5/find?q=${query}&type=like&appid=${process.env.REACT_APP_API_KEY}&lang=ru`
     );
     const data = await response.json();
     setCities(data?.list);
@@ -47,15 +47,6 @@ const Search = () => {
 
   // Закрыть Список город при клике вне карточки поиска
   const handleClickOut = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = e.target as Element;
-
-    // if (
-    //   !el.classList.contains("search-cities__input") ||
-    //   !el.classList.contains("search-block")
-    // ) {
-    //   setShowCities(!showCities);
-    // }
-    // console.log(el);
     setShowCities(!showCities);
     setQuery("");
     setCities([]);

@@ -48,7 +48,7 @@ const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
   const handleChangeForecast = () => {
     setIsCheckedForecast((prevState) => {
       const changeForecast = !prevState;
-      localStorage.setItem("forecastData", changeForecast);
+      localStorage.setItem("forecastData", changeForecast.toString());
       return changeForecast;
     });
   };
@@ -57,7 +57,7 @@ const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
   const handleChangeSun = () => {
     setSiCheckedSun((prevState) => {
       const changeSun = !prevState;
-      localStorage.setItem("solarData", changeSun);
+      localStorage.setItem("solarData", changeSun.toString());
       return changeSun;
     });
   };

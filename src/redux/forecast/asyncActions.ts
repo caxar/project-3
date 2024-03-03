@@ -6,7 +6,7 @@ export const fetchForecast = createAsyncThunk(
   async ({ lat, lon }: { lat: number; lon: number }) => {
     try {
       const response = await axios.get(
-        `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=8d2fcb9f4a085aba30788b5fb43bea6f&cnt=5&units=metric&lang=ru`
+        `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}&cnt=5&units=metric&lang=ru`
       );
       if (response.data) {
         return response.data;

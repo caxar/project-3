@@ -49,7 +49,7 @@ const FavItem: React.FC<FavProps> = ({
             <span>{FormatCountry(country)}</span>
             <span>
               <img
-                src={`https://openweathermap.org/images/flags/${FormatCountry(
+                src={`${process.env.REACT_APP_FLAG_URL}${FormatCountry(
                   country
                 )}.png`}
                 alt=""

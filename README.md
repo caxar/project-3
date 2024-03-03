@@ -1,30 +1,33 @@
-# React + TypeScript + Vite
+# Проект Погода 
+![image](https://github.com/caxar/project-3/assets/45434213/23dc6325-d751-48d7-9e26-bb710b157851)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1.Загрузка данных через кнопку `местоположение`
+   - при нажатии на кнопку ![image](https://github.com/caxar/project-3/assets/45434213/dd4e52c8-d796-4163-89ad-d6e663238cb8) <br>
+     будет загружены данные о погоде в вашем регионе
 
-Currently, two official plugins are available:
+## 2.Поиск по городу
+   - В поле `Поиск по городу` вводим любой город и можно увидеть предполагаемые города для выбора ![image](https://github.com/caxar/project-3/assets/45434213/ff9519c6-6c0a-40d9-9094-39c0653ed588)
+ <br>
+     выбираем городу и происходит загрузка данных о погоде
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## 3.Дабвление города в избранное
+   - При нажатии на кнопку в `в избаррное` город попадает в сохраненные города для просмотра погоды по ним
+   - ![image](https://github.com/caxar/project-3/assets/45434213/6be4a302-ae37-40f7-9592-4b9b49e674a9)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 4.Вид бокового меню
+  - При клике по иконке ![image](https://github.com/caxar/project-3/assets/45434213/f4ba9b98-b9d8-4f9d-8719-a3487d70e5bf)
+ открывается боковое меню с добавленными городами в избранное и настройками отображения
+  -![image](https://github.com/caxar/project-3/assets/45434213/066edf1e-64d7-47fe-8610-3513cd540760)
+<br>
+   - Город можно удалить либо нажать на него для загрузки погоды выбранного города
+   - так же можно либо вкл/выкл отображение Заката & Рассвета и Прогноза на 5 дней
 
-- Configure the top-level `parserOptions` property like this:
+## Примечание
+  - При первом рендере данные загружаются по default `Балаклава`
+  - Все данные сохраняются в `localstorage` о выбранном городе или настйроки отображение
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Запуск проекта
+  - Для начала нужно скачать проект делаем команду `git clone https://github.com/caxar/project-3.git`
+  - Далее нужно установить `npm install`
+  - Потом для запуска проекта пишем `npm run dev` запускается `http://localhost:5173/`

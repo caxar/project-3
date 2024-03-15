@@ -1,15 +1,18 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Scrollbar, Pagination } from "swiper/modules";
 
-import "swiper/css";
-import "swiper/css/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { selectHourForecast } from "../../../redux/hourForecast/selectors";
 import { formatTemp } from "../../../utils/formatTemp";
 import { formatDate } from "../../../utils/formatDate";
 import { formatTime } from "../../../utils/FormatTime";
+
 import { nanoid } from "nanoid";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/scrollbar";
 
 const HourlyWeather = () => {
   const data = useSelector(selectHourForecast);
@@ -39,9 +42,10 @@ const HourlyWeather = () => {
           </div> */}
 
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation, Scrollbar, Pagination]}
           slidesPerView={6}
           spaceBetween={30}
+          navigation
           onSlideChange={() => console.log("slide change")}
         >
           {dataItem?.map((forecast: any) => (

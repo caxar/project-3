@@ -7,7 +7,7 @@ import { fetchAirsAction } from "../../redux/airPopulation/asyncActions";
 import { fetchForecast } from "../../redux/forecast/asyncActions";
 import { fetchHourForecast } from "../../redux/hourForecast/asyncActions";
 
-import CurrentWeather from "./Current_weather/indext";
+import CurrentWeather from "./Current_weather";
 import Highlights from "./Highlights";
 import Forecast from "./Forecast";
 // import HourlyWeather from "./Hourly_weather
@@ -65,7 +65,7 @@ const Home = () => {
               </div>
             ) : (
               <>
-                <div className="weather-wrapper__top flex flex-col items-center gap-4 lg:flex-row md:items-baseline">
+                <div className="weather-wrapper__top flex flex-col items-center gap-4 lg:flex-row md:items-stretch">
                   <CurrentWeather />
                   <Highlights />
                 </div>

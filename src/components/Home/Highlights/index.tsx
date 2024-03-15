@@ -21,9 +21,9 @@ const Highlights = () => {
       <div className="weather-items__title text-[22px] font-bold mb-3">
         Прогноз на сегодня
       </div>
-      <div className="weather-items__wrapper">
-        <div className="weather-items__top flex flex-col justify-between lg:flex-row mb-3 gap-3">
-          <div className="items-top__air bg-bg_color rounded-2xl py-3 px-3 md:w-[w-49%]">
+      <div className="weather-items__wrapper flex flex-col justify-between h-[80%]">
+        <div className="weather-items__top flex flex-col justify-between lg:flex-row gap-3">
+          <div className="items-top__air bg-bg_color rounded-2xl py-3 px-3 md:w-[49%]">
             <div className="top-air__title text-[18px] font-bold mb-3">
               Индекс качества воздуха
             </div>

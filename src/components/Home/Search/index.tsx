@@ -2,6 +2,7 @@ import React from "react";
 import SearchItem from "./SearchItem";
 import { nanoid } from "nanoid";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 import { fetchWeathersAction } from "../../../redux/weather/asyncActions";
 
@@ -18,11 +19,10 @@ const Search = () => {
 
   // Загрузка города при поиске
   const fetchCities = async () => {
-    const response = await fetch(
+    const response = await axios.get(
       `https://api.openweathermap.org/data/2.5/find?q=${query}&type=like&appid=${process.env.REACT_APP_API_KEY}&lang=ru`
     );
-    const data = await response.json();
-    setCities(data?.list);
+    setCities(response?.data?.list);
     setShowCities(true);
   };
 

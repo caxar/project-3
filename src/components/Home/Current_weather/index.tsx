@@ -87,7 +87,7 @@ const CurrentWeather: React.FC = () => {
         bg-card_color text-bg_color
         py-[5px] px-[10px] rounded-full hover:bg-grab_color transition ease-in-out"
       >
-        <div className="hidden xl:block ">В избранное</div>
+        <div className="hidden xl:block">В избранное</div>
         <svg
           className=""
           width="30px"

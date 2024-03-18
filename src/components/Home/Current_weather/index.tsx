@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { formatTemp } from "../../../utils/formatTemp";
 import { FormatCountry } from "../../../utils/formatCountry";
+import { selectFav } from "../../../redux/favoriteList/selectors";
 
 interface WeatherProps {
   coord: {
@@ -40,7 +41,9 @@ const CurrentWeather: React.FC = () => {
 
   const { entities } = useSelector(selectWeather);
 
-  const [addFavInfo, setAddFavInfo] = React.useState<boolean>(false);
+  const { items } = useSelector(selectFav);
+
+  const [isFavorite, setIsFavorite] = React.useState<boolean>(false);
 
   // деструктурируем данные
   const { id, weather, main, name, sys, dt, coord }: any = entities;
@@ -60,7 +63,7 @@ const CurrentWeather: React.FC = () => {
     const itemDataList = itemsFavoriteList ? JSON.parse(itemsFavoriteList) : [];
 
     const isAlreadyAdded = itemDataList.some(
-      (favItem: { id: any }) => favItem.id === id
+      (favItem: { id: any }) => favItem?.id === id
     );
 
     if (isAlreadyAdded) {
@@ -70,6 +73,15 @@ const CurrentWeather: React.FC = () => {
       showFavAdd();
     }
   };
+
+  console.log(dt);
+
+  // проверка на добавление в избранное если такой элемент есть то показать что добавленно или добавить
+  React.useEffect(() => {
+    setIsFavorite(
+      items?.some((favItem) => favItem?.id === id && favItem?.isFavorite)
+    );
+  }, []);
 
   // Функция запускается при добавлении favorite
   const showFavAdd = () => {
@@ -83,29 +95,33 @@ const CurrentWeather: React.FC = () => {
     <div className="current-weather bg-sidebar_color w-[100%] h-[100%] py-5 px-5 rounded-2xl lg:w-[23%]">
       <div
         onClick={() => addFaforite()}
-        className="group current-weather__add flex justify-center items-center gap-2 cursor-pointer font-medium
+        className={`group current-weather__add flex justify-center items-center gap-2 text-[18px] cursor-pointer font-bold
         bg-card_color text-bg_color
-        py-[5px] px-[10px] rounded-full hover:bg-grab_color transition ease-in-out"
+        py-[5px] px-[10px] rounded-full hover:bg-grab_color transition ease-in-out ${
+          isFavorite ? "pointer-events-none bg-green-500" : ""
+        }`}
       >
-        <div className="hidden xl:block">В избранное</div>
-        <svg
+        {/* <div className="hidden xl:block">Добавить</div> */}
+        {isFavorite ? "Добавленно" : <div className="">в избранное</div>}
+
+        {/* <svg
           className=""
           width="30px"
           height="30px"
           viewBox="0 0 24 24"
-          fill="none"
+          fill={`${isFavorite ? "#000" : "none"}`}
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
-            stroke="#000000"
+            stroke={`${isFavorite ? "#000" : "#000"}`}
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-        </svg>
+        </svg> */}
       </div>
       <div className="current-weather__temp flex flex-col items-center">
         <div className="heading text-[40px] font-bold">

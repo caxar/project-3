@@ -1,5 +1,5 @@
 export const formatDate = (timestamp: number) => {
-  const daysOfWeek = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"];
+  const daysOfWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
   const months = [
     "Январь",
     "Февраль",
@@ -16,7 +16,8 @@ export const formatDate = (timestamp: number) => {
   ];
 
   const date = new Date(timestamp * 1000);
-  const dayOfWeek = daysOfWeek[date.getDay()];
+
+  const dayOfWeek = daysOfWeek[date.getDay() - 1];
   const day = date.getDate();
   const month = months[date.getMonth()];
 

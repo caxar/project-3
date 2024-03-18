@@ -5,6 +5,7 @@ export type FavItem = {
   lon: number;
   count?: number | undefined;
   country: string;
+  isFavorite?: boolean;
 };
 
 export interface FavSliceState {

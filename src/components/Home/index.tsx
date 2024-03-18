@@ -16,15 +16,46 @@ import Header from "./Header";
 
 import { Triangle } from "react-loader-spinner";
 import HourlyWeather from "./Hourly_weather";
+import { setCurrentLocation } from "../../redux/weather/weatherSlice";
 
 const Home = () => {
-  const [openMenu, setOpenMenu] = React.useState(false);
-  const [loader, setShowLoader] = React.useState(true);
+  // Открыть меню
+  const [openMenu, setOpenMenu] = React.useState<boolean>(false);
+  // задержка статуса загрузки
+  const [loader, setShowLoader] = React.useState<boolean>(true);
+  // если получаем данные lat и lon
+  const [lattitude, setLattitude] = React.useState<number>();
+  const [long, setLong] = React.useState<number>();
 
+  // изменения состояния приложения
   const dispatch = useDispatch();
 
   const { status, lat, lon }: any = useSelector(selectWeather);
 
+  // полуаем данные прогноза погоды на неделю
+  const forecastChange = localStorage.getItem("forecastData");
+
+  // получения координат с favItem первого элемента
+  // const loadPointFavItem = () => {
+  //   const favItemData = localStorage.getItem("favItem");
+  //   const DataParse = JSON.parse(favItemData);
+  //   const returnDataParse = DataParse.filter((item: any, index: number) =>
+  //     index === 0 ? item : ""
+  //   );
+
+  //   DataParse?.map(
+  //     (item: {
+  //       lat: React.SetStateAction<undefined>;
+  //       lon: React.SetStateAction<undefined>;
+  //     }) => {
+  //       setLattitude(item.lat);
+  //       setLong(item.lon);
+  //       dispatch(setCurrentLocation(item.lat, item.lon));
+  //     }
+  //   );
+  // };
+
+  // Загрузка данных при изменения координат
   React.useEffect(() => {
     dispatch(fetchWeathersAction({ lat, lon }) as any);
     dispatch(fetchAirsAction({ lat, lon }) as any);
@@ -35,15 +66,12 @@ const Home = () => {
   React.useEffect(() => {
     if (status === "pending") {
       setShowLoader(true);
-
       // Задержка status "Pending, succedded"
       setTimeout(() => {
         setShowLoader(false);
-      }, 1000);
+      }, 1500);
     }
   }, [status]);
-
-  const forecastChange = localStorage.getItem("forecastData");
 
   return (
     <>

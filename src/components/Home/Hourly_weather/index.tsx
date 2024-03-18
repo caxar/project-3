@@ -20,7 +20,7 @@ const HourlyWeather = () => {
   const dataItem = data?.entitiesHour?.list;
 
   return (
-    <div className="hourly-weather w-[75%] py-5 ">
+    <div className="hourly-weather w-full py-5 ">
       <div className="hourly-weather__title text-[22px] font-bold mb-3">
         Прогноз на неделю
       </div>

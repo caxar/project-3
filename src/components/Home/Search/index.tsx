@@ -5,17 +5,20 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import { fetchWeathersAction } from "../../../redux/weather/asyncActions";
+import { fetchAirsAction } from "../../../redux/airPopulation/asyncActions";
+import { fetchHourForecast } from "../../../redux/hourForecast/asyncActions";
+import { fetchForecast } from "../../../redux/forecast/asyncActions";
 
 const Search = () => {
   const dispatch = useDispatch();
 
   // Данные из input
   const [query, setQuery] = React.useState("");
-  // Комопнент щагрузки города
+  // Комопнент загрузки города
   const [cities, setCities] = React.useState([]);
 
   // Показывать или скрывать предложенные города
-  const [showCities, setShowCities] = React.useState(true);
+  const [showCities, setShowCities] = React.useState<boolean>(true);
 
   // Загрузка города при поиске
   const fetchCities = async () => {
@@ -26,9 +29,12 @@ const Search = () => {
     setShowCities(true);
   };
 
-  // Передеача координат для оббновление комопнента загрузки данных
+  // Передеача координат для оббновление комопнента загрузки данных погоды
   const fetchWeather = async (lat: any, lon: any) => {
     dispatch(fetchWeathersAction({ lat, lon }) as any);
+    dispatch(fetchAirsAction({ lat, lon }) as any);
+    dispatch(fetchForecast({ lat, lon }) as any);
+    dispatch(fetchHourForecast({ lat, lon }) as any);
   };
 
   // при клике запуск функции передачи данных
@@ -46,7 +52,7 @@ const Search = () => {
   }, [query]);
 
   // Закрыть Список город при клике вне карточки поиска
-  const handleClickOut = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleClickOut = (_e: React.MouseEvent<HTMLDivElement>) => {
     setShowCities(!showCities);
     setQuery("");
     setCities([]);

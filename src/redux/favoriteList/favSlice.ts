@@ -20,15 +20,23 @@ export const favSlice = createSlice({
 
       if (findItem) {
         findItem.count++;
+        findItem.isFavorite = true; // добавленно в избранное установка значения
       } else {
         state.items.push({
           ...action.payload,
           count: 1,
+          isFavorite: true,
         });
       }
     },
     removeFav: (state, action: PayloadAction<string | number>) => {
-      state.items = state.items.filter((item) => item.id !== action.payload);
+      // state.items = state.items.filter((item) => item.id !== action.payload);
+      state.items = state.items
+        .map((item) => ({
+          ...item,
+          isFavorite: item.id === action.payload ? false : item.isFavorite, // проверка и удаления значения из избранного
+        }))
+        .filter((item) => item.id !== action.payload);
     },
     clearFavItems: (state) => {
       state.items = [];

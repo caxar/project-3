@@ -12,6 +12,7 @@ import FavItem from "../FavItem";
 import { nanoid } from "nanoid";
 
 const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
+  const [searchQuery, setSearchQuery] = React.useState("");
   // загрузка соостояния показывать или скрывать блок прогноза ил localstorage
   const [isCheckedForecast, setIsCheckedForecast] = React.useState(
     localStorage.getItem("forecastData") === "true"
@@ -24,6 +25,12 @@ const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
 
   // ДАнные из slice о добавленных городах в избранное
   const { items } = useSelector(selectFav);
+
+  const filteredItems = items.filter((item) =>
+    item.title.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
+  );
+
+  console.log(searchQuery);
 
   const ref = React.useRef(false);
 
@@ -105,8 +112,42 @@ const Menu: React.FC<MenuProps> = ({ openMenu, setOpenMenu }) => {
               <div className="content-block__title text-[18px] font-bold mb-[20px]">
                 Добавленные города:
               </div>
+              <div className="mb-10">
+                {/* <input
+                  className="bg-bg_color w-full h-full py-[10px] px-[20px] rounded-full"
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Поиск"
+                /> */}
+                <div className="search-block relative bg-bg_color w-[100%] rounded-full flex items-center">
+                  <div className="search-block__icon ml-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <input
+                    className="search-cities__input bg-transparent w-full h-full py-[10px] pl-[10px] pr-[20px]"
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Поиск..."
+                  />
+                </div>
+              </div>
               <div className="menu-content__item-block flex flex-col gap-2">
-                {items?.map((item) => (
+                {filteredItems?.map((item) => (
                   <FavItem key={nanoid()} {...item} setOpenMenu={setOpenMenu} />
                 ))}
               </div>
